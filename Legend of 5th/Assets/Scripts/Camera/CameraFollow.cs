@@ -5,11 +5,11 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public GameObject player;
-    public float originX;
-    public float originY;
+    public float offsetX;
+    public float offsetY;
     public float screenLengthX;
     public float screenLengthY;
-    public int speedDecayFactor;
+    public float speedDecayFactor;
     private Vector3 target;
     void Start()
     {
@@ -20,8 +20,8 @@ public class CameraFollow : MonoBehaviour
     {
         //find target (the screen the player is in and the camera should be)
         target = new Vector3(
-            Mathf.Round(player.transform.position.x / screenLengthX) * screenLengthX, 
-            Mathf.Round(player.transform.position.y / screenLengthY) * screenLengthY, 
+            Mathf.Round(player.transform.position.x / screenLengthX) * screenLengthX + offsetX, 
+            Mathf.Round(player.transform.position.y / screenLengthY) * screenLengthY + offsetY, 
         0);
 
         //find average between target screen position and current position and go to it
