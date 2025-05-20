@@ -3,7 +3,8 @@ using System.Collections;
 
 public class CameraMover : MonoBehaviour
 {
-    public float waitTime = 15f;                // Time to wait before each move
+    public float topWaitTime = 15f;                // Time to wait before each move
+    public float bottomWaitTime = 15f;             // Time to wait before reseting
     public float moveSpeed = 2f;                // Speed of movement
     public Vector3 targetOffset = new Vector3(0, -5, 0); // How far down to move
 
@@ -23,7 +24,7 @@ public class CameraMover : MonoBehaviour
         while (true)
         {
             // Wait before moving
-            yield return new WaitForSeconds(waitTime);
+            yield return new WaitForSeconds(topWaitTime);
 
             // Start moving down
             isMoving = true;
@@ -32,6 +33,9 @@ public class CameraMover : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
                 yield return null;
             }
+
+            //Wait for a few seconds before resettign back to the top
+            yield return new WaitForSeconds(bottomWaitTime);
 
             // Reset position instantly
             transform.position = originalPosition;
