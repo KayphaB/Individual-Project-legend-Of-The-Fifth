@@ -10,7 +10,6 @@ public class CameraMover : MonoBehaviour
 
     private Vector3 originalPosition;
     private Vector3 targetPosition;
-    private bool isMoving = false;
 
     void Start()
     {
@@ -27,7 +26,6 @@ public class CameraMover : MonoBehaviour
             yield return new WaitForSeconds(topWaitTime);
 
             // Start moving down
-            isMoving = true;
             while (Vector3.Distance(transform.position, targetPosition) > 0.01f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
@@ -39,7 +37,6 @@ public class CameraMover : MonoBehaviour
 
             // Reset position instantly
             transform.position = originalPosition;
-            isMoving = false;
 
             // Loop again
         }

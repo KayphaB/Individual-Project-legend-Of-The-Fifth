@@ -9,17 +9,22 @@ public class FireFlip : MonoBehaviour
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
-        StartCoRrutine(FireFlip());
+        StartCoroutine(Flip());
     }
 
-    IEnumerator FireFlip()
+    IEnumerator Flip()
     {
         while(true)
         {
             yield return new WaitForSeconds(speed);
 
             //flip the fire
-            sprite.flipY = !sprite.flipY;
+            sprite.flipX = true;
+
+            yield return new WaitForSeconds(speed);
+
+            //flip the fire back
+            sprite.flipX = false; 
         }
     }
 }
