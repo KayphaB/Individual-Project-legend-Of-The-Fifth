@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CaveEnterance : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class CaveEnterance : MonoBehaviour
     public GameObject camera;
     private CameraFollow camScript;
     public GameObject caveExit;
+    public string caveText;
+    public TMP_Text caveTextObject;
     void Start()
     {
         camScript = camera.GetComponent<CameraFollow>();
@@ -33,6 +36,9 @@ public class CaveEnterance : MonoBehaviour
                     transform.position.x, 
                     transform.position.y - 0.5f, 
                 -5);
+
+                //set the caves text to the "caveText" variable
+                caveTextObject.text = caveText;
             }
         }
     }
