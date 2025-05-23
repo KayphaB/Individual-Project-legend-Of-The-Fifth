@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class CaveEnterance : MonoBehaviour
+public class CaveExit : MonoBehaviour
 {
     public Vector3 destination;
     public GameObject camera;
     private CameraFollow camScript;
-    public GameObject caveExit;
     void Start()
     {
         camScript = camera.GetComponent<CameraFollow>();
@@ -16,23 +14,16 @@ public class CaveEnterance : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        //if the player enters the trigger and is facing towards the cave, then teleport the player to the set destination
+        //if the player enters the trigger and is facing towards the exit, then teleport the player to the set caveEnterance
         if (other.name == "Player")
         {
-            if (other.GetComponent<PlayerController>().direction == 3)
+            if (other.GetComponent<PlayerController>().direction == 4)
             {
-                //move the camera and player to destination
                 other.transform.position = destination;
                 camera.transform.position = new Vector3(
                     Mathf.Round(destination.x / camScript.screenLengthX) * camScript.screenLengthX + camScript.offsetX, 
                     Mathf.Round(destination.y / camScript.screenLengthY) * camScript.screenLengthY + camScript.offsetY, 
                 0);
-
-                //set the cave exit's destination to the location of the cave entrance
-                caveExit.GetComponent<CaveExit>().destination = new Vector3(
-                    transform.position.x, 
-                    transform.position.y - 0.5f, 
-                -5);
             }
         }
     }
