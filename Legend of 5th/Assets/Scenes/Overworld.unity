@@ -211,7 +211,8 @@ MonoBehaviour:
   - {fileID: -1427495157, guid: bbfd833769b3cf54399222d975875b45, type: 3}
   - {fileID: -788804114, guid: bbfd833769b3cf54399222d975875b45, type: 3}
   - {fileID: 537675164, guid: bbfd833769b3cf54399222d975875b45, type: 3}
-  delay: 0.5
+  delay: 5
+  timer: 0
   on: 0
 --- !u!114 &113531212
 MonoBehaviour:
@@ -1009,6 +1010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: {x: 0, y: 0, z: -5}
   camera: {fileID: 519420028}
+  screenFade: {fileID: 113531211}
 --- !u!61 &539482283
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1104,6 +1106,7 @@ MonoBehaviour:
   caveExit: {fileID: 539482280}
   caveText: YO,
   caveTextObject: {fileID: 914467487}
+  screenFade: {fileID: 113531211}
 --- !u!61 &548836628
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41930,6 +41933,7 @@ MonoBehaviour:
   caveExit: {fileID: 539482280}
   caveText: YO,
   caveTextObject: {fileID: 914467487}
+  screenFade: {fileID: 113531211}
 --- !u!61 &1075148095
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -41987,7 +41991,7 @@ GameObject:
   - component: {fileID: 1087198723}
   - component: {fileID: 1087198722}
   m_Layer: 0
-  m_Name: Morel Text
+  m_Name: Shop Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42032,7 +42036,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ITS DANGEROUS TO GO ALONE, TAKE THIS
+  m_text: BUY SOMETHIN' WILL YA'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21c5ccac124cd2249b0f273e85167e98, type: 2}
   m_sharedMaterial: {fileID: 3440293688179655259, guid: 21c5ccac124cd2249b0f273e85167e98, type: 2}
@@ -63227,7 +63231,7 @@ GameObject:
   - component: {fileID: 1814439576}
   - component: {fileID: 1814439575}
   m_Layer: 0
-  m_Name: Morel of Wisdom
+  m_Name: Shop Dwarf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63357,7 +63361,7 @@ GameObject:
   - component: {fileID: 1847505190}
   - component: {fileID: 1847505189}
   m_Layer: 0
-  m_Name: Morel CaveExit
+  m_Name: Shop CaveExit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63392,6 +63396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destination: {x: 0, y: 0, z: -5}
   camera: {fileID: 519420028}
+  screenFade: {fileID: 113531211}
 --- !u!61 &1847505190
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -63712,13 +63717,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8356285306482106935}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.013745474, y: 0, z: -0, w: 0.9999055}
   m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.575, y: 0, z: 0}
 --- !u!114 &4313437011673112891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63732,6 +63737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  frozen: 0
   direction: 0
 --- !u!61 &6823191242901248308
 BoxCollider2D:
@@ -63834,6 +63840,7 @@ MonoBehaviour:
   caveExit: {fileID: 539482280}
   caveText: TAKE THIS WEAPON, FIND AMINITUS AND SLAY HIM
   caveTextObject: {fileID: 914467487}
+  screenFade: {fileID: 113531211}
 --- !u!1 &8356285306482106935
 GameObject:
   m_ObjectHideFlags: 0
