@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0e62777dbe40e624d9ab70286bf3bbb8
+guid: 50a10b87cf8fc2843b13b4a548640634
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UI elements_0
+      name: UI elements (1)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 099e636af3bbe50418cab25beca8634d
-      internalID: -1156781836
+      spriteID: 5748211642bf14241bf8b5d95bb58ee8
+      internalID: 1660933461
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI elements_1
+      name: UI elements (1)_1
       rect:
         serializedVersion: 2
         x: 24
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21513da44b759344f99af6b21c60352f
-      internalID: 687024580
+      spriteID: 93a1b11a57c78da4eb26900dc8f91e55
+      internalID: 225489178
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI elements_2
+      name: UI elements (1)_2
       rect:
         serializedVersion: 2
         x: 48
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2504b0131ac1524b9f6f56a2612c68d
-      internalID: 1410138135
+      spriteID: 0ef40738b7509ff409ceede1f56efc21
+      internalID: -1766807332
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI elements_3
+      name: UI elements (1)_3
       rect:
         serializedVersion: 2
         x: 0
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7115e1677ea8c5d49a75a366874a3948
-      internalID: -1661849335
+      spriteID: 1e0fee7831422314a95f774c9cc8f12f
+      internalID: -1806575483
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI elements_4
+      name: UI elements (1)_4
       rect:
         serializedVersion: 2
         x: 24
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4303fc11c21dac142afaad816c579b15
-      internalID: -969177340
+      spriteID: 66be2910f55ff044eb3e239bbcd9f21e
+      internalID: 1063355116
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI elements_5
+      name: UI elements (1)_5
       rect:
         serializedVersion: 2
         x: 48
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da37674a3cd427a41aaf51d67ebab47b
-      internalID: 150303008
+      spriteID: 2c41f8bb2d948584e95dc76de8940e05
+      internalID: -1286940432
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI elements_6
+      name: UI elements (1)_6
       rect:
         serializedVersion: 2
         x: 0
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1cf20956e7c92f468f1dde1ed3bb5f6
-      internalID: 315034329
+      spriteID: 817c7ed743cdce5489479918eefe4a57
+      internalID: 377120730
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UI elements_7
+      name: UI elements (1)_7
       rect:
         serializedVersion: 2
         x: 24
@@ -271,8 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f7f1fa5fb315e043a6455ad5489bf06
-      internalID: -2070470280
+      spriteID: 19327e2f66471b34bba24b499733ff96
+      internalID: 81559565
       vertices: []
       indices: 
       edges: []
@@ -288,14 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      UI elements_0: -1156781836
-      UI elements_1: 687024580
-      UI elements_2: 1410138135
-      UI elements_3: -1661849335
-      UI elements_4: -969177340
-      UI elements_5: 150303008
-      UI elements_6: 315034329
-      UI elements_7: -2070470280
+      UI elements (1)_0: 1660933461
+      UI elements (1)_1: 225489178
+      UI elements (1)_2: -1766807332
+      UI elements (1)_3: -1806575483
+      UI elements (1)_4: 1063355116
+      UI elements (1)_5: -1286940432
+      UI elements (1)_6: 377120730
+      UI elements (1)_7: 81559565
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
