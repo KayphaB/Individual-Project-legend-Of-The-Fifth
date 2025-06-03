@@ -7,7 +7,7 @@ public class ChainController : MonoBehaviour
     private PlayerController pc;
     private bool extending;
     public int weapon;
-    private float length;
+    public float length;
     public float chainSpeed;
     public float maceSpeed;
 
@@ -21,7 +21,7 @@ public class ChainController : MonoBehaviour
         pc = GetComponent<PlayerController>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (weapon != 0)
         {
@@ -31,15 +31,32 @@ public class ChainController : MonoBehaviour
                 if (length == 0)
                 {
                     extending = true;
+                    Debug.Log("extending");
                 }
+                Debug.Log("J pressed");
             }
             
-            //retract weapon when J is released
-            if (Input.GetKeyUp(KeyCode.J))
+            //retract weapon when J is released or maximum length is reached
+            if (Input.GetKeyUp(KeyCode.J) || length >= 2 && weapon == 1 || length >= 4 && weapon == 2)
             {
                 extending = false;
             }
+        }
 
+        if (length > 0)
+        {
+            pc.usingWeapon = true;
+        }
+        else
+        {
+            pc.usingWeapon = false;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (weapon != 0)
+        {
             //increase weapon legth when extending and decrease it when retracting
             if (extending)
             {
@@ -80,12 +97,12 @@ public class ChainController : MonoBehaviour
                 if (weapon == 1)
                 {
                     chains[pc.direction - 1].SetActive(true);
-                    chains[pc.direction - 1].GetComponent<SpriteRenderer>().sprite = chainSprites[Mathf.Round(length * 2) - 1];
+                    chains[pc.direction - 1].GetComponent<SpriteRenderer>().sprite = chainSprites[(int) (Mathf.Round(length * 2) - 1)];
                 }
                 else
                 {
                     maces[pc.direction - 1].SetActive(true);
-                    maces[pc.direction - 1].GetComponent<SpriteRenderer>().sprite = maceSprites[Mathf.Round(length * 2) - 1];
+                    maces[pc.direction - 1].GetComponent<SpriteRenderer>().sprite = maceSprites[(int) (Mathf.Round(length * 2) - 1)];
                 }
             }
         }

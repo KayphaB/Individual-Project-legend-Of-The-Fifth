@@ -35,7 +35,7 @@ public class CaveEnterance : MonoBehaviour
     IEnumerator CaveEnter(Collider2D player)
     {
         //freeze player movement and wait until screen fades to black
-        player.GetComponent<PlayerController>().frozen = true;
+        player.GetComponent<PlayerController>().enteringCave = true;
         screenFade.timer = 0;
         screenFade.on = true;
         yield return new WaitForSeconds(screenFade.delay / 50 * 4f);
@@ -63,7 +63,7 @@ public class CaveEnterance : MonoBehaviour
         yield return new WaitForSeconds(screenFade.delay / 50 * 3f);
 
         //un-freeze player controls
-        player.GetComponent<PlayerController>().frozen = false;
+        player.GetComponent<PlayerController>().enteringCave = false;
 
         duplicate = false;
     }
