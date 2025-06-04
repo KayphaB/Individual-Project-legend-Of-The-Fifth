@@ -31,9 +31,7 @@ public class ChainController : MonoBehaviour
                 if (length == 0)
                 {
                     extending = true;
-                    Debug.Log("extending");
                 }
-                Debug.Log("J pressed");
             }
             
             //retract weapon when J is released or maximum length is reached
@@ -98,11 +96,15 @@ public class ChainController : MonoBehaviour
                 {
                     chains[pc.direction - 1].SetActive(true);
                     chains[pc.direction - 1].GetComponent<SpriteRenderer>().sprite = chainSprites[(int) (Mathf.Round(length * 2) - 1)];
+                    chains[pc.direction - 1].GetComponent<BoxCollider2D>().offset = new Vector2(
+                        -1.25f + Mathf.Round(length), 0);
                 }
                 else
                 {
                     maces[pc.direction - 1].SetActive(true);
                     maces[pc.direction - 1].GetComponent<SpriteRenderer>().sprite = maceSprites[(int) (Mathf.Round(length * 2) - 1)];
+                    maces[pc.direction - 1].GetComponent<BoxCollider2D>().offset = new Vector2(
+                        -2.25f + Mathf.Round(length), 0);
                 }
             }
         }
