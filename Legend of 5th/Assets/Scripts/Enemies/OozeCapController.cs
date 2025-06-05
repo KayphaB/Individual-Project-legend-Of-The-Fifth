@@ -9,6 +9,7 @@ public class OozeCapController : MonoBehaviour
     public float speed;
     public int direction = 1;
     public GameObject[] moveChecks;
+    public GameObject player;
 
     private float hitReset;
     public Color hit;
@@ -35,6 +36,35 @@ public class OozeCapController : MonoBehaviour
         if (Health <= 0)
         {
             Destroy(this.gameObject);
+        }
+
+        //if the player is lined up with you then switch your direction towards the player if possible
+        if (Vector3.Distance(transform.position, player.transform.position) <= 3)
+        {
+            Debug.Log("player close enough x dist: " + Mathf.Abs(player.transform.position.x - transform.position.x) + " y dist: " + Mathf.Abs(player.transform.position.y - transform.position.y));
+            if (Mathf.Abs(player.transform.position.x - transform.position.x) < 1 && (direction == 1 || direction == 2))
+            {
+                if (player.transform.position.y < transform.position.y)
+                {
+                    direction = 4;
+                }
+                else
+                {
+                    direction = 3;
+                }
+            }
+
+            if (Mathf.Abs(player.transform.position.y - transform.position.y) < 1 && (direction == 3 || direction == 4))
+            {
+                if (player.transform.position.x < transform.position.x)
+                {
+                    direction = 1;
+                }
+                else
+                {
+                    direction = 2;
+                }
+            }
         }
 
         //If the direction your moving in is blocked than switch directions

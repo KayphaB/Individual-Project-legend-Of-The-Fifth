@@ -473,6 +473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isColliding: 0
+  camera: {fileID: 519420028}
 --- !u!61 &131824918
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -505,7 +506,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.1}
+  m_Offset: {x: 0, y: 0.2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -516,7 +517,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 0.9}
+  m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
 --- !u!4 &131824919
 Transform:
@@ -626,6 +627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isColliding: 0
+  camera: {fileID: 519420028}
 --- !u!61 &175801827
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -658,7 +660,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.1, y: 0}
+  m_Offset: {x: -0.2, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -669,7 +671,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 0.9}
+  m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
 --- !u!4 &175801828
 Transform:
@@ -1860,6 +1862,7 @@ MonoBehaviour:
   - {fileID: 1003609448}
   - {fileID: 131824916}
   - {fileID: 1664858607}
+  player: {fileID: 5617400922372088365}
   hit: {r: 1, g: 0.2, b: 0, a: 1}
   white: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &754277762
@@ -42737,6 +42740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isColliding: 0
+  camera: {fileID: 519420028}
 --- !u!61 &1003609450
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -42769,7 +42773,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1, y: 0}
+  m_Offset: {x: 0.2, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -42780,7 +42784,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 0.9}
+  m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
 --- !u!4 &1003609451
 Transform:
@@ -44056,7 +44060,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -420, y: 400}
+  m_AnchoredPosition: {x: -460, y: 400}
   m_SizeDelta: {x: 280, y: 168}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1410203238
@@ -44215,7 +44219,7 @@ GameObject:
   - component: {fileID: 1490034539}
   m_Layer: 0
   m_Name: Lava
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65261,6 +65265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isColliding: 0
+  camera: {fileID: 519420028}
 --- !u!61 &1664858609
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -65293,7 +65298,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.1}
+  m_Offset: {x: 0, y: -0.2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -65304,7 +65309,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 0.9}
+  m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
 --- !u!4 &1664858610
 Transform:
@@ -65456,7 +65461,7 @@ GameObject:
   - component: {fileID: 1808227296}
   m_Layer: 0
   m_Name: Water
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
