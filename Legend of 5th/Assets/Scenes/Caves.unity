@@ -4829,6 +4829,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  frozen: 0
+  enteringCave: 0
+  usingWeapon: 0
   direction: 0
 --- !u!4 &5638842644540839112
 Transform:

@@ -32361,6 +32361,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  frozen: 0
+  enteringCave: 0
+  usingWeapon: 0
   direction: 0
 --- !u!61 &801257678
 BoxCollider2D:
@@ -32528,7 +32531,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b64d71f402726854e89596fbb2fd8ee2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ba3c4df53cd350b43860c539b8ab84ac, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
