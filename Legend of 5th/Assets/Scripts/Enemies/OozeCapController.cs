@@ -12,6 +12,7 @@ public class OozeCapController : MonoBehaviour
     public GameObject player;
 
     private float hitReset;
+    private float colorShift;
     public Color hit;
     public Color white;
     private SpriteRenderer sr;
@@ -20,12 +21,12 @@ public class OozeCapController : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         //turn red for a bit after getting hit
-        if (hitReset > 0)
+        if (colorShift > 0)
         {
-            hitReset -= 1;
+            colorShift -= 1;
             sr.color = hit;
         }
         else
@@ -33,15 +34,54 @@ public class OozeCapController : MonoBehaviour
             sr.color = white;
         }
 
+        //decay hitReset over time
+        if (hitReset > 0)
+        {
+            hitReset -= 1;
+        }
+
+        //constantly move in the set direction
+        if (direction == 1)
+        {
+            transform.position = new Vector3(
+                transform.position.x - speed,
+                transform.position.y,
+                transform.position.z);
+        }
+        else if (direction == 2)
+        {
+            transform.position = new Vector3(
+                transform.position.x + speed,
+                transform.position.y,
+                transform.position.z);
+        }
+        else if (direction == 3)
+        {
+            transform.position = new Vector3(
+                transform.position.x,
+                transform.position.y + speed,
+                transform.position.z);
+        }
+        else if (direction == 4)
+        {
+            transform.position = new Vector3(
+                transform.position.x,
+                transform.position.y - speed,
+                transform.position.z);
+        }
+    }
+
+    void Update()
+    {
+        //die if health reaches zero
         if (Health <= 0)
         {
             Destroy(this.gameObject);
         }
 
         //if the player is lined up with you then switch your direction towards the player if possible
-        if (Vector3.Distance(transform.position, player.transform.position) <= 3)
+        if (Vector3.Distance(transform.position, player.transform.position) <= 2.5)
         {
-            Debug.Log("player close enough x dist: " + Mathf.Abs(player.transform.position.x - transform.position.x) + " y dist: " + Mathf.Abs(player.transform.position.y - transform.position.y));
             if (Mathf.Abs(player.transform.position.x - transform.position.x) < 1 && (direction == 1 || direction == 2))
             {
                 if (player.transform.position.y < transform.position.y)
@@ -68,7 +108,7 @@ public class OozeCapController : MonoBehaviour
         }
 
         //If the direction your moving in is blocked than switch directions
-        if (moveChecks[direction - 1].GetComponent<MoveCheckers>().isColliding)
+        if (moveChecks[direction - 1].GetComponent<MoveCheckers>().isColliding || moveChecks[direction - 1].GetComponent<MoveCheckers>().outOfBounds)
         {
             if (Random.Range(0, 2) == 1)
             {
@@ -87,36 +127,6 @@ public class OozeCapController : MonoBehaviour
                 }
             }
         }
-
-        //constantly move in the set direction
-        if (direction == 1)
-        {
-            transform.position = new Vector3(
-                transform.position.x - speed, 
-                transform.position.y, 
-                transform.position.z);
-        }
-        else if (direction == 2)
-        {
-            transform.position = new Vector3(
-                transform.position.x + speed, 
-                transform.position.y, 
-                transform.position.z);
-        }
-        else if (direction == 3)
-        {
-            transform.position = new Vector3(
-                transform.position.x, 
-                transform.position.y + speed, 
-                transform.position.z);
-        }
-        else if (direction == 4)
-        {
-            transform.position = new Vector3(
-                transform.position.x, 
-                transform.position.y - speed, 
-                transform.position.z);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -124,13 +134,15 @@ public class OozeCapController : MonoBehaviour
         //take damage if collided with weapon, more damage if its the mace
         if (other.CompareTag("Weapon") && hitReset <= 0)
         {
-            hitReset = 30;
             Health -= 2;
+            hitReset = 30;
+            colorShift = 5;
         }
         else if (other.CompareTag("Weapon+") && hitReset <= 0)
         {
-            hitReset = 30;
             Health -= 4;
+            hitReset = 30;
+            colorShift = 5;
         }
     }
 }

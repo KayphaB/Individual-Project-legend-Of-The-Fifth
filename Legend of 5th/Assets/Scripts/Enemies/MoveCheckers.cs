@@ -5,6 +5,7 @@ using UnityEngine;
 public class MoveCheckers : MonoBehaviour
 {
     public bool isColliding;
+    public bool outOfBounds;
     public GameObject camera;
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -20,15 +21,17 @@ public class MoveCheckers : MonoBehaviour
 
     void Update()
     {
+        outOfBounds = false;
+
         //trigger a collision if enemy goes off camera
         if (Mathf.Abs(transform.position.x - camera.transform.position.x) > camera.GetComponent<CameraFollow>().screenLengthX / 2 - GetComponent<BoxCollider2D>().size.x / 2)
         {
-            isColliding = true;
+            outOfBounds = true;
         }
 
         if (Mathf.Abs(transform.position.y - camera.transform.position.y) > camera.GetComponent<CameraFollow>().screenLengthY / 2 - GetComponent<BoxCollider2D>().size.y / 2)
         {
-            isColliding = true;
+            outOfBounds = true;
         }
     }
 }

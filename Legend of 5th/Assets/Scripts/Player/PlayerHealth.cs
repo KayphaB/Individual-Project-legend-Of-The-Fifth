@@ -16,19 +16,22 @@ public class PlayerHealth : MonoBehaviour
         {
             HP = maxHP;
         }
+    }
 
+    private void FixedUpdate()
+    {
         if (immuneFrames > 0)
         {
             immuneFrames -= 1;
         }
     }
 
-    void OnCollisionEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Enemy") && immuneFrames == 0)
         {
             HP -= 0.5f;
-            immuneFrames = 50;
+            immuneFrames = 40;
         }
     }
 }

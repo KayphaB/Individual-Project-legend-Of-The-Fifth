@@ -304,7 +304,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035, y: 0}
+  m_AnchoredPosition: {x: -0.67, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &113531211
@@ -473,6 +473,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isColliding: 0
+  outOfBounds: 0
   camera: {fileID: 519420028}
 --- !u!61 &131824918
 BoxCollider2D:
@@ -627,6 +628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isColliding: 0
+  outOfBounds: 0
   camera: {fileID: 519420028}
 --- !u!61 &175801827
 BoxCollider2D:
@@ -1206,6 +1208,98 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &410739251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 410739254}
+  - component: {fileID: 410739253}
+  - component: {fileID: 410739252}
+  m_Layer: 0
+  m_Name: PlayerHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &410739252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410739251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b548d216feaea35428b0a156ffd67f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 3
+  HP: 3
+--- !u!61 &410739253
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410739251}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.125, y: 1.125}
+  m_EdgeRadius: 0
+--- !u!4 &410739254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410739251}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 368486679195133598}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,7 +1689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartNum: 3
-  player: {fileID: 5874069637137696791}
+  player: {fileID: 410739252}
   full: {fileID: -1286940432, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
   half: {fileID: 377120730, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
   empty: {fileID: 81559565, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
@@ -1755,7 +1849,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1855,7 +1949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 5
-  speed: 0.05
+  speed: 0.04
   direction: 1
   moveChecks:
   - {fileID: 175801825}
@@ -2259,7 +2353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartNum: 4
-  player: {fileID: 5874069637137696791}
+  player: {fileID: 410739252}
   full: {fileID: -1286940432, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
   half: {fileID: 377120730, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
   empty: {fileID: 81559565, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
@@ -2352,7 +2446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartNum: 2
-  player: {fileID: 5874069637137696791}
+  player: {fileID: 410739252}
   full: {fileID: -1286940432, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
   half: {fileID: 377120730, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
   empty: {fileID: 81559565, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
@@ -42740,6 +42834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isColliding: 0
+  outOfBounds: 0
   camera: {fileID: 519420028}
 --- !u!61 &1003609450
 BoxCollider2D:
@@ -43298,7 +43393,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartNum: 5
-  player: {fileID: 5874069637137696791}
+  player: {fileID: 410739252}
   full: {fileID: -1286940432, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
   half: {fileID: 377120730, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
   empty: {fileID: 81559565, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
@@ -43562,7 +43657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartNum: 6
-  player: {fileID: 5874069637137696791}
+  player: {fileID: 410739252}
   full: {fileID: -1286940432, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
   half: {fileID: 377120730, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
   empty: {fileID: 81559565, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
@@ -47806,7 +47901,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartNum: 1
-  player: {fileID: 5874069637137696791}
+  player: {fileID: 410739252}
   full: {fileID: -1286940432, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
   half: {fileID: 377120730, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
   empty: {fileID: 81559565, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
@@ -65265,6 +65360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isColliding: 0
+  outOfBounds: 0
   camera: {fileID: 519420028}
 --- !u!61 &1664858609
 BoxCollider2D:
@@ -65442,7 +65538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartNum: 7
-  player: {fileID: 5874069637137696791}
+  player: {fileID: 410739252}
   full: {fileID: -1286940432, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
   half: {fileID: 377120730, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
   empty: {fileID: 81559565, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
@@ -67995,7 +68091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartNum: 8
-  player: {fileID: 5874069637137696791}
+  player: {fileID: 410739252}
   full: {fileID: -1286940432, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
   half: {fileID: 377120730, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
   empty: {fileID: 81559565, guid: 50a10b87cf8fc2843b13b4a548640634, type: 3}
@@ -68184,6 +68280,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 410739254}
   - {fileID: 379183110601640393}
   - {fileID: 6314430813170397860}
   - {fileID: 7688594659828795440}
@@ -69059,7 +69156,6 @@ GameObject:
   - component: {fileID: 7157499856252143363}
   - component: {fileID: 4628969838675237649}
   - component: {fileID: 6243011790767343870}
-  - component: {fileID: 5874069637137696791}
   - component: {fileID: 6887323336089633074}
   - component: {fileID: 9072444372219475358}
   - component: {fileID: 2819710877310110542}
@@ -69070,20 +69166,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &5874069637137696791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5617400922372088365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b548d216feaea35428b0a156ffd67f43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 3
-  HP: 3
 --- !u!212 &6188639020995102782
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -26,7 +26,7 @@ public class ChainController : MonoBehaviour
         if (weapon != 0)
         {
             //start extending weapon when J is pressed
-            if (Input.GetKeyDown(KeyCode.J))
+            if (Input.GetKeyDown(KeyCode.J) && !pc.frozen)
             {
                 if (length == 0)
                 {
