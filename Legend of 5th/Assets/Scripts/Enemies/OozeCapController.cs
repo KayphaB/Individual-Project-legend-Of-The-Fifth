@@ -5,6 +5,9 @@ using UnityEngine;
 public class OozeCapController : MonoBehaviour
 {
     public int Health;
+    private GameObject instantiatedPoof;
+    public GameObject poof;
+    public GameObject[] lootTable;
 
     public float speed;
     public int direction = 1;
@@ -78,6 +81,8 @@ public class OozeCapController : MonoBehaviour
         //die if health reaches zero
         if (Health <= 0)
         {
+            instantiatedPoof = Instantiate(poof, transform.position, Quaternion.identity);
+            instantiatedPoof.GetComponent<POOF>().spawn = lootTable[Random.Range(0, lootTable.Length)];
             Destroy(this.gameObject);
         }
 
