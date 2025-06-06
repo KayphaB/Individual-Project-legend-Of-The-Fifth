@@ -6,7 +6,11 @@ public class MoveCheckers : MonoBehaviour
 {
     public bool isColliding;
     public bool outOfBounds;
-    public GameObject camera;
+    private GameObject camera;
+    private void Start()
+    {
+        camera = GameObject.FindGameObjectWithTag("MainCamera");
+    }
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Environment"))

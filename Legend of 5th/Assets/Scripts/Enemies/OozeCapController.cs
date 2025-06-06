@@ -9,7 +9,7 @@ public class OozeCapController : MonoBehaviour
     public float speed;
     public int direction = 1;
     public GameObject[] moveChecks;
-    public GameObject player;
+    private GameObject player;
 
     private float hitReset;
     private float colorShift;
@@ -19,6 +19,8 @@ public class OozeCapController : MonoBehaviour
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        direction = Random.Range(1, 5);
     }
 
     private void FixedUpdate()
