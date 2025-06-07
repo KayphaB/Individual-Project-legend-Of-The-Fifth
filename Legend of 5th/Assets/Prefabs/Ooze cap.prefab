@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6920779954920433806}
   - component: {fileID: 2933941894024931478}
   - component: {fileID: 2030074695567668349}
-  - component: {fileID: 1968436222996675380}
   m_Layer: 0
   m_Name: Direction 1
   m_TagString: Untagged
@@ -77,7 +76,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8}
+  m_Size: {x: 0.8, y: 0.7}
   m_EdgeRadius: 0
 --- !u!114 &2030074695567668349
 MonoBehaviour:
@@ -93,33 +92,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isColliding: 0
   outOfBounds: 0
---- !u!50 &1968436222996675380
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 192243821265125507}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &3808155753406804353
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,7 +103,6 @@ GameObject:
   - component: {fileID: 2467689463959274198}
   - component: {fileID: 5019339111687444313}
   - component: {fileID: 4774403581120458414}
-  - component: {fileID: 6671178487249055145}
   m_Layer: 0
   m_Name: Direction 2
   m_TagString: Untagged
@@ -197,7 +168,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8}
+  m_Size: {x: 0.8, y: 0.7}
   m_EdgeRadius: 0
 --- !u!114 &4774403581120458414
 MonoBehaviour:
@@ -213,33 +184,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isColliding: 0
   outOfBounds: 0
---- !u!50 &6671178487249055145
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3808155753406804353}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &5734169585229850457
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +195,6 @@ GameObject:
   - component: {fileID: 2584100997835008925}
   - component: {fileID: 5085769818553302160}
   - component: {fileID: 1427423312089515223}
-  - component: {fileID: 7025665092550700209}
   m_Layer: 0
   m_Name: Direction 3
   m_TagString: Untagged
@@ -317,7 +260,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8}
+  m_Size: {x: 0.7, y: 0.8}
   m_EdgeRadius: 0
 --- !u!114 &1427423312089515223
 MonoBehaviour:
@@ -333,33 +276,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isColliding: 0
   outOfBounds: 0
---- !u!50 &7025665092550700209
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5734169585229850457}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &5796976981210235374
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +288,7 @@ GameObject:
   - component: {fileID: 7488565148592172849}
   - component: {fileID: 303177882877251039}
   - component: {fileID: 2205429262337866687}
+  - component: {fileID: 7709590180870932824}
   m_Layer: 0
   m_Name: Ooze cap
   m_TagString: Enemy
@@ -510,22 +427,52 @@ MonoBehaviour:
   Health: 5
   poof: {fileID: 2881853792150073294, guid: 50effc0a1223eaf479e3d30052cfcaa5, type: 3}
   lootTable:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6773592966193457918, guid: 5f7ef624e75e5ec45a04fd8cbe116291, type: 3}
   - {fileID: 6773592966193457918, guid: 5f7ef624e75e5ec45a04fd8cbe116291, type: 3}
   - {fileID: 6773592966193457918, guid: 5f7ef624e75e5ec45a04fd8cbe116291, type: 3}
   - {fileID: 7813069823413299943, guid: e19bb49d0f183244a89e06cbceec0845, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 0.04
+  dropChance: 0.5
+  speed: 2.5
   direction: 1
-  moveChecks:
+  moveCheckObjects:
   - {fileID: 192243821265125507}
   - {fileID: 3808155753406804353}
   - {fileID: 5734169585229850457}
   - {fileID: 8264675908528154574}
+  moveChecks:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   hit: {r: 1, g: 0.2, b: 0, a: 1}
   white: {r: 1, g: 1, b: 1, a: 1}
+--- !u!50 &7709590180870932824
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5796976981210235374}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &8264675908528154574
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,7 +484,6 @@ GameObject:
   - component: {fileID: 4577064973760794162}
   - component: {fileID: 36601656435698698}
   - component: {fileID: 3250003146185132971}
-  - component: {fileID: 8619498609053648020}
   m_Layer: 0
   m_Name: Direction 4
   m_TagString: Untagged
@@ -603,7 +549,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8}
+  m_Size: {x: 0.7, y: 0.8}
   m_EdgeRadius: 0
 --- !u!114 &3250003146185132971
 MonoBehaviour:
@@ -619,30 +565,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isColliding: 0
   outOfBounds: 0
---- !u!50 &8619498609053648020
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8264675908528154574}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0

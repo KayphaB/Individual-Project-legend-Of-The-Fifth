@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public bool frozen;
     public bool enteringCave;
     public bool usingWeapon;
+    public bool cameraTransition;
 
     private Animator anim;
     public int direction;
@@ -18,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        frozen = enteringCave || usingWeapon;
+        frozen = enteringCave || usingWeapon || cameraTransition;
 
         anim.speed = 1;
         if (Input.GetKey(KeyCode.A) && !frozen)
