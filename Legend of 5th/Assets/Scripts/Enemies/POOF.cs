@@ -14,7 +14,7 @@ public class POOF : MonoBehaviour
     private SpriteRenderer sr;
 
     private ClassicFollow cameraS;
-    private Vector2 checkSize = Vector2.one;
+    private Vector2 checkSize = Vector2.one * 0.7f;
     void Start()
     {
         puffDecayTime = 15;

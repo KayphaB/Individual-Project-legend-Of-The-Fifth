@@ -8,7 +8,7 @@ public class CaveEnterance : MonoBehaviour
 {
     public Vector3 destination;
     public GameObject camera;
-    private CameraFollow camScript;
+    private ClassicFollow camScript;
     public GameObject caveExit;
     public string caveText;
     public TMP_Text caveTextObject;
@@ -16,7 +16,7 @@ public class CaveEnterance : MonoBehaviour
     private bool duplicate;
     void Start()
     {
-        camScript = camera.GetComponent<CameraFollow>();
+        camScript = camera.GetComponent<ClassicFollow>();
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -45,13 +45,13 @@ public class CaveEnterance : MonoBehaviour
         camera.transform.position = new Vector3(
             Mathf.Round(destination.x / camScript.screenLengthX) * camScript.screenLengthX + camScript.offsetX, 
             Mathf.Round(destination.y / camScript.screenLengthY) * camScript.screenLengthY + camScript.offsetY, 
-        0);
+            -10);
 
         //set the cave exit's destination to the location of the cave entrance
         caveExit.GetComponent<CaveExit>().destination = new Vector3(
             transform.position.x, 
             transform.position.y - 0.5f, 
-        -5);
+            -1);
 
         //set the caves text to the "caveText" variable
         caveTextObject.text = caveText;

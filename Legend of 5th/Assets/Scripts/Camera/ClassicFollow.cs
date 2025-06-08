@@ -15,6 +15,7 @@ public class ClassicFollow : MonoBehaviour
     private bool newRoom;
     private Vector3 target;
 
+    public int[] enemiesPerRoom;
     public GameObject[] enemiesToSpawn;
     public GameObject poof;
     void Start()
@@ -94,16 +95,56 @@ public class ClassicFollow : MonoBehaviour
             {
                 Destroy(toDelete[i]);
             }
+
+            //snap player into camera when alost done with transition
+            if (Vector3.Distance(transform.position, target) < 1)
+            {
+                if (playerC.transform.position.x - (transform.position.x  - offsetX)< -screenLengthX / 2 + 0.625f)
+                {
+                    playerC.transform.position = new Vector3(
+                        transform.position.x - offsetX - (screenLengthX / 2 - 0.625f),
+                        playerC.transform.position.y,
+                        playerC.transform.position.z);
+                }
+
+                if (playerC.transform.position.x - (transform.position.x - offsetX)> screenLengthX / 2 - 0.625f)
+                {
+                    playerC.transform.position = new Vector3(
+                        transform.position.x - offsetX + (screenLengthX / 2 - 0.625f),
+                        playerC.transform.position.y,
+                        playerC.transform.position.z);
+                }
+
+                if (playerC.transform.position.y - (transform.position.y - offsetY) < -screenLengthY / 2 + 0.5f)
+                {
+                    playerC.transform.position = new Vector3(
+                        playerC.transform.position.x,
+                        transform.position.y - offsetY - (screenLengthY / 2 - 0.5f),
+                        playerC.transform.position.z);
+                }
+
+                if (playerC.transform.position.y - (transform.position.y - offsetY)> screenLengthY / 2 - 0.5f)
+                {
+                    playerC.transform.position = new Vector3(
+                        playerC.transform.position.x,
+                        transform.position.y - offsetY + (screenLengthY / 2 - 0.5f),
+                        playerC.transform.position.z);
+                }
+            }
         }
 
         //double check to see if you just entered a new room
         if (newRoom && !playerC.cameraTransition)
         {
+            int spawnNum = enemiesPerRoom[(int) (
+                (transform.position.x - offsetX) / screenLengthX + 
+                (transform.position.y - offsetY) / screenLengthY * 4 + 9)];
+
             //spawn enemies in new room
-            for (int i = 0;i < 3;i++)
+            for (int i = 0;i < spawnNum;i++)
             {
                 GameObject instantiatedPoof = Instantiate(poof, GetRandomPos(transform.position), Quaternion.identity);
-                instantiatedPoof.GetComponent<POOF>().spawn = enemiesToSpawn[0];
+                instantiatedPoof.GetComponent<POOF>().spawn = enemiesToSpawn[Random.Range(0, enemiesToSpawn.Length)];
             }
         }
     }

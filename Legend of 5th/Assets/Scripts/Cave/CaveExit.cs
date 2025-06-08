@@ -6,12 +6,12 @@ public class CaveExit : MonoBehaviour
 {
     public Vector3 destination;
     public GameObject camera;
-    private CameraFollow camScript;
+    private ClassicFollow camScript;
     public ScreenFade screenFade;
     private bool duplicate;
     void Start()
     {
-        camScript = camera.GetComponent<CameraFollow>();
+        camScript = camera.GetComponent<ClassicFollow>();
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -22,12 +22,12 @@ public class CaveExit : MonoBehaviour
             if (other.GetComponent<PlayerController>().direction == 4)
             {
                 duplicate = true;
-                StartCoroutine(CaveEnter(other));   
+                StartCoroutine(CaveLeave(other));   
             }
         }
     }
 
-    IEnumerator CaveEnter(Collider2D player)
+    IEnumerator CaveLeave(Collider2D player)
     {
         //freeze player movement and wait until screen fades to black
         player.GetComponent<PlayerController>().frozen = true;
@@ -40,7 +40,7 @@ public class CaveExit : MonoBehaviour
         camera.transform.position = new Vector3(
             Mathf.Round(destination.x / camScript.screenLengthX) * camScript.screenLengthX + camScript.offsetX, 
             Mathf.Round(destination.y / camScript.screenLengthY) * camScript.screenLengthY + camScript.offsetY, 
-        0);
+        -10);
         
         //wait a bit, then start un-fading the screen
         yield return new WaitForSeconds(screenFade.delay / 50);

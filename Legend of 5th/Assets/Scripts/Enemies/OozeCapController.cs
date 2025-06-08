@@ -69,34 +69,34 @@ public class OozeCapController : MonoBehaviour
         }
 
         //if the player is lined up with you then switch your direction towards the player if possible
-        if (Vector3.Distance(transform.position, player.transform.position) <= 2.5)
-        {
-            if (Mathf.Abs(player.transform.position.x - transform.position.x) < 1 && (direction == 1 || direction == 2))
-            {
-                if (player.transform.position.y < transform.position.y &&
-                    (!moveChecks[3].isColliding && !moveChecks[3].outOfBounds))
-                {
-                    direction = 4;
-                }
-                else if (!moveChecks[2].isColliding && !moveChecks[2].outOfBounds)
-                {
-                    direction = 3;
-                }
-            }
-
-            if (Mathf.Abs(player.transform.position.y - transform.position.y) < 1 && (direction == 3 || direction == 4))
-            {
-                if (player.transform.position.x < transform.position.x &&
-                    (!moveChecks[0].isColliding && !moveChecks[0].outOfBounds))
-                {
-                    direction = 1;
-                }
-                else if (!moveChecks[1].isColliding && !moveChecks[1].outOfBounds)
-                {
-                    direction = 2;
-                }
-            }
-        }
+        //if (Vector3.Distance(transform.position, player.transform.position) <= 2.5)
+        //{
+        //    if (Mathf.Abs(player.transform.position.x - transform.position.x) < 1 && (direction == 1 || direction == 2))
+        //   {
+        //        if (player.transform.position.y < transform.position.y &&
+        //            (!moveChecks[3].isColliding && !moveChecks[3].outOfBounds))
+        //        {
+        //            direction = 4;
+        //        }
+        //        else if (!moveChecks[2].isColliding && !moveChecks[2].outOfBounds)
+        //        {
+        //            direction = 3;
+        //        }
+        //    }
+        //
+        //    if (Mathf.Abs(player.transform.position.y - transform.position.y) < 1 && (direction == 3 || direction == 4))
+        //    {
+        //        if (player.transform.position.x < transform.position.x &&
+        //            (!moveChecks[0].isColliding && !moveChecks[0].outOfBounds))
+        //        {
+        //            direction = 1;
+        //        }
+        //        else if (!moveChecks[1].isColliding && !moveChecks[1].outOfBounds)
+        //        {
+        //            direction = 2;
+        //        }
+        //    }
+        //}
 
         //If the direction your moving in is blocked than switch directions
         if (moveChecks[direction - 1].isColliding || moveChecks[direction - 1].outOfBounds)

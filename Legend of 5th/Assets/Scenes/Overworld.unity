@@ -998,6 +998,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 3
   HP: 3
+  white: {r: 1, g: 1, b: 1, a: 1}
+  onHit: {r: 1, g: 0.20000002, b: 0, a: 1}
 --- !u!61 &410739253
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1187,6 +1189,7 @@ MonoBehaviour:
   screenLengthX: 20
   screenLengthY: 12
   cameraSpeed: 0.2
+  enemiesPerRoom: 04000000000000000300000003000000040000000300000003000000010000000000000000000000030000000100000003000000020000000100000001000000
   enemiesToSpawn:
   - {fileID: 5796976981210235374, guid: c0d024f0fced97b418c5f9c5a41a91d2, type: 3}
   poof: {fileID: 2881853792150073294, guid: 50effc0a1223eaf479e3d30052cfcaa5, type: 3}

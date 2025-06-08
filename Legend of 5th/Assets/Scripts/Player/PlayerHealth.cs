@@ -9,6 +9,15 @@ public class PlayerHealth : MonoBehaviour
     
     private float immuneFrames;
 
+    private float hitFrames;
+    private SpriteRenderer sr;
+    public Color white;
+    public Color onHit;
+    private void Start()
+    {
+        sr = transform.parent.GetComponent<SpriteRenderer>();
+    }
+
     void Update()
     {
         //cap health at the max
@@ -20,6 +29,16 @@ public class PlayerHealth : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (hitFrames > 0)
+        {
+            hitFrames -= 1;
+            sr.color = onHit;
+        }
+        else
+        {
+            sr.color = white;
+        }
+
         if (immuneFrames > 0)
         {
             immuneFrames -= 1;
@@ -32,6 +51,7 @@ public class PlayerHealth : MonoBehaviour
         {
             HP -= 0.5f;
             immuneFrames = 40;
+            hitFrames = 10;
         }
     }
 }
