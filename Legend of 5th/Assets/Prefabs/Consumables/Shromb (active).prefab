@@ -99,3 +99,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Poof: {fileID: 2881853792150073294, guid: 50effc0a1223eaf479e3d30052cfcaa5, type: 3}
   countdown: 100
+  explosion: {fileID: 8081772339217482370, guid: b074c8f921edcb94dbbe7b9e4c27d525, type: 3}

@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Environment
   - Pickup
+  - Explosion
   layers:
   - Default
   - TransparentFX

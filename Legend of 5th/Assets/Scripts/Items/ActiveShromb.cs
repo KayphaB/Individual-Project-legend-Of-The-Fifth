@@ -8,6 +8,7 @@ public class ActiveShromb : MonoBehaviour
     public GameObject Poof;
     private PlayerController pc;
     public float countdown;
+    public GameObject explosion;
     void Start()
     {
         pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -23,6 +24,7 @@ public class ActiveShromb : MonoBehaviour
             {
                 GameObject instapoof = Instantiate(Poof, transform.position, Quaternion.identity);
                 instapoof.GetComponent<POOF>().outOfEnvironment = false;
+                instapoof.GetComponent<POOF>().spawn = explosion;
                 for (int i = 0; i < 4;i++)
                 {
                     Vector3 spawnPos = Vector3.one;
