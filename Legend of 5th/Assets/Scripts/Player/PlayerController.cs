@@ -44,11 +44,15 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            //if no walking keys pressed, stop animation
-            anim.speed = 0;
+            //if no walking keys pressed and not attacking, stop animation
+            if (GetComponent<ChainController>().length == 0)
+            {
+                anim.speed = 0;
+            }
         }
 
         //update the animation's variables
         anim.SetInteger("direction", direction);
+        anim.SetBool("attacking", GetComponent<ChainController>().length != 0);
     }
 }

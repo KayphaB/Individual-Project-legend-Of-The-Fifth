@@ -24,8 +24,8 @@ public class POOF : MonoBehaviour
         while (IsColliding())
         {
             transform.position = new Vector3(
-                cameraS.transform.position.x + Random.Range((int)cameraS.screenLengthX / 2 - 2, (int)-cameraS.screenLengthX / 2 + 1),
-                cameraS.transform.position.y + Random.Range((int)cameraS.screenLengthY / 2 - 2, (int)-cameraS.screenLengthY / 2 + 1),
+                cameraS.transform.position.x - cameraS.offsetX + Random.Range((int)cameraS.screenLengthX / 2 - 2, (int)-cameraS.screenLengthX / 2 + 1),
+                cameraS.transform.position.y - cameraS.offsetY + Random.Range((int)cameraS.screenLengthY / 2 - 2, (int)-cameraS.screenLengthY / 2 + 1),
                 -0.5f);
         }
     }

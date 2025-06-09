@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ClassicFollow : MonoBehaviour
 {
-    private GameObject player;
+    public GameObject player;
     private PlayerController playerC;
     public float offsetX;
     public float offsetY;
@@ -137,8 +137,8 @@ public class ClassicFollow : MonoBehaviour
         if (newRoom && !playerC.cameraTransition)
         {
             int spawnNum = enemiesPerRoom[(int) (
-                (transform.position.x - offsetX) / screenLengthX + 
-                (transform.position.y - offsetY) / screenLengthY * 4 + 9)];
+                Mathf.Floor((transform.position.x - offsetX) / screenLengthX) + 
+                Mathf.Floor((transform.position.y - offsetY) / screenLengthY) * 4 + 9)];
 
             //spawn enemies in new room
             for (int i = 0;i < spawnNum;i++)
@@ -151,9 +151,19 @@ public class ClassicFollow : MonoBehaviour
 
     private Vector3 GetRandomPos(Vector3 pos)
     {
-        return new Vector3(
-            pos.x + Random.Range((int) screenLengthX / 2 - 2, (int) -screenLengthX / 2 + 1),
-            pos.y + Random.Range((int) screenLengthY / 2 - 2, (int) -screenLengthY / 2 + 1),
+        Vector3 newPos = new Vector3(
+               pos.x - offsetX + Random.Range((int)screenLengthX / 2 - 2, (int)-screenLengthX / 2 + 1),
+               pos.y - offsetY + Random.Range((int)screenLengthY / 2 - 2, (int)-screenLengthY / 2 + 1),
+               -0.5f);
+
+        while (Vector3.Distance(newPos, player.transform.position) <= 2)
+        {
+            newPos = new Vector3(
+            pos.x - offsetX + Random.Range((int)screenLengthX / 2 - 2, (int)-screenLengthX / 2 + 1),
+            pos.y - offsetY + Random.Range((int)screenLengthY / 2 - 2, (int)-screenLengthY / 2 + 1),
             -0.5f);
+        }
+
+        return newPos;
     }
 }

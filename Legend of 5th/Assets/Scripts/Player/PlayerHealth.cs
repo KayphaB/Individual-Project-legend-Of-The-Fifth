@@ -7,9 +7,9 @@ public class PlayerHealth : MonoBehaviour
     public int maxHP = 3;
     public float HP = 3;
     
-    private float immuneFrames;
+    public float immuneFrames;
 
-    private float hitFrames;
+    public float hitFrames;
     private SpriteRenderer sr;
     public Color white;
     public Color onHit;
