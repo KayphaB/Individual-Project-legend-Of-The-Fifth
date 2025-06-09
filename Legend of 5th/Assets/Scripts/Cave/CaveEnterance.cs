@@ -16,8 +16,9 @@ public class CaveEnterance : MonoBehaviour
     public bool hasItem;
     public GameObject[] itemPickup;
     public Sprite[] itemVisuals;
-    public int itemLevel;
-    public int itemID;
+    public int[] itemLevel;
+    public int[] itemID;
+    public int[] cost;
 
     public TMP_Text caveTextObject;
     public ScreenFade screenFade;
@@ -64,7 +65,7 @@ public class CaveEnterance : MonoBehaviour
         {
             caveExit.GetComponent<CaveExit>().destination = new Vector3(
                 transform.position.x,
-                transform.position.y - 0.5f,
+                transform.position.y - 0.75f,
                 -1);
         }
 
@@ -80,26 +81,51 @@ public class CaveEnterance : MonoBehaviour
             {
                 ItemPickup pickup = itemPickup[1].GetComponent<ItemPickup>();
                 pickup.cave = gameObject.GetComponent<CaveEnterance>();
-                if (itemLevel == 0)
+                if (itemLevel[1] == 0)
                 {
                     pickup.unlocks = true;
                     pickup.givesItem = false;
-                    pickup.unlock = itemID;
+                    pickup.unlock = itemID[1];
                     itemPickup[1].GetComponent<SpriteRenderer>().sprite = itemVisuals[1];
                 }
                 else
                 {
                     pickup.unlocks = false;
                     pickup.givesItem = true;
-                    pickup.item = itemID;
-                    pickup.itemLevel = itemLevel;
+                    pickup.item = itemID[1];
+                    pickup.itemLevel = itemLevel[1];
                     itemPickup[1].GetComponent<SpriteRenderer>().sprite = itemVisuals[1];
                 }
             }
         }
-        
-        //wait a bit, then start un-fading the screen
-        yield return new WaitForSeconds(screenFade.delay / 50);
+        else if (destination.y == -5)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                ItemPickup pickup = itemPickup[i].GetComponent<ItemPickup>();
+                pickup.cave = gameObject.GetComponent<CaveEnterance>();
+                if (itemLevel[i] == 0)
+                {
+                    pickup.unlocks = true;
+                    pickup.givesItem = false;
+                    pickup.cost = cost[i];
+                    pickup.unlock = itemID[i];
+                    itemPickup[1].GetComponent<SpriteRenderer>().sprite = itemVisuals[i];
+                }
+                else
+                {
+                    pickup.unlocks = false;
+                    pickup.givesItem = true;
+                    pickup.cost = cost[i];
+                    pickup.item = itemID[i];
+                    pickup.itemLevel = itemLevel[i];
+                    itemPickup[1].GetComponent<SpriteRenderer>().sprite = itemVisuals[i];
+                }
+            }
+        }
+
+            //wait a bit, then start un-fading the screen
+            yield return new WaitForSeconds(screenFade.delay / 50);
         screenFade.timer = 0;
         screenFade.on = false;
         yield return new WaitForSeconds(screenFade.delay / 50 * 3f);

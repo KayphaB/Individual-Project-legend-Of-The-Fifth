@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ItemPickup : MonoBehaviour
 {
@@ -14,14 +15,20 @@ public class ItemPickup : MonoBehaviour
     public int unlock;
 
     public CaveEnterance cave;
-    void Start()
+
+    public int cost;
+    public TextMeshPro costText;
+    void Update()
     {
-        
+        if (cost != 0)
+        {
+            costText.text = cost.ToString();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && other.GetComponent<PlayerInventory>().mycopurite >= cost)
         {
             if (givesItem)
             {
@@ -37,6 +44,8 @@ public class ItemPickup : MonoBehaviour
             {
                 cave.hasItem = false;
             }
+
+            other.GetComponent<PlayerInventory>().mycopurite -= cost;
 
             gameObject.SetActive(false);
         }
