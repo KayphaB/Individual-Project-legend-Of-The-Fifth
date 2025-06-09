@@ -134,7 +134,7 @@ public class ClassicFollow : MonoBehaviour
         }
 
         //double check to see if you just entered a new room
-        if (newRoom && !playerC.cameraTransition)
+        if (newRoom && !playerC.cameraTransition && transform.position.x < 50)
         {
             int spawnNum = enemiesPerRoom[(int) (
                 Mathf.Floor((transform.position.x - offsetX) / screenLengthX) + 

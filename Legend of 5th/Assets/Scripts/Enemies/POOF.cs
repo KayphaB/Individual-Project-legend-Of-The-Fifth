@@ -15,18 +15,22 @@ public class POOF : MonoBehaviour
 
     private ClassicFollow cameraS;
     private Vector2 checkSize = Vector2.one * 0.7f;
+    public bool outOfEnvironment = true;
     void Start()
     {
         puffDecayTime = 15;
         sr = GetComponent<SpriteRenderer>();
         cameraS = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ClassicFollow>();
 
-        while (IsColliding())
+        if (outOfEnvironment)
         {
-            transform.position = new Vector3(
-                cameraS.transform.position.x - cameraS.offsetX + Random.Range((int)cameraS.screenLengthX / 2 - 2, (int)-cameraS.screenLengthX / 2 + 1),
-                cameraS.transform.position.y - cameraS.offsetY + Random.Range((int)cameraS.screenLengthY / 2 - 2, (int)-cameraS.screenLengthY / 2 + 1),
-                -0.5f);
+            while (IsColliding())
+            {
+                transform.position = new Vector3(
+                    cameraS.transform.position.x - cameraS.offsetX + Random.Range((int)cameraS.screenLengthX / 2 - 2, (int)-cameraS.screenLengthX / 2 + 1),
+                    cameraS.transform.position.y - cameraS.offsetY + Random.Range((int)cameraS.screenLengthY / 2 - 2, (int)-cameraS.screenLengthY / 2 + 1),
+                    -0.5f);
+            }
         }
     }
     void FixedUpdate()

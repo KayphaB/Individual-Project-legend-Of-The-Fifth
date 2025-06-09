@@ -15,6 +15,6 @@ public class WaterManager : MonoBehaviour
     void Update()
     {
         //disable water collisions if the player has the raft
-        collider.enabled = (!hasRaft);
+        collider.isTrigger = (hasRaft);
     }
 }

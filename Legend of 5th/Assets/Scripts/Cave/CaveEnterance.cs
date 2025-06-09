@@ -10,7 +10,15 @@ public class CaveEnterance : MonoBehaviour
     public GameObject camera;
     private ClassicFollow camScript;
     public GameObject caveExit;
+    public bool leaveUp;
     public string caveText;
+
+    public bool hasItem;
+    public GameObject[] itemPickup;
+    public Sprite[] itemVisuals;
+    public int itemLevel;
+    public int itemID;
+
     public TMP_Text caveTextObject;
     public ScreenFade screenFade;
     private bool duplicate;
@@ -24,11 +32,8 @@ public class CaveEnterance : MonoBehaviour
         //if the player enters the trigger and is facing towards the cave, then teleport the player to the set destination
         if (other.name == "Player" && !duplicate)
         {
-            if (other.GetComponent<PlayerController>().direction == 3)
-            {
-                duplicate = true;
-                StartCoroutine(CaveEnter(other));   
-            }
+            duplicate = true;
+            StartCoroutine(CaveEnter(other));
         }
     }
 
@@ -48,13 +53,50 @@ public class CaveEnterance : MonoBehaviour
             -10);
 
         //set the cave exit's destination to the location of the cave entrance
-        caveExit.GetComponent<CaveExit>().destination = new Vector3(
-            transform.position.x, 
-            transform.position.y - 0.5f, 
-            -1);
+        if (leaveUp)
+        {
+            caveExit.GetComponent<CaveExit>().destination = new Vector3(
+                transform.position.x,
+                transform.position.y + 1,
+                -1);
+        }
+        else
+        {
+            caveExit.GetComponent<CaveExit>().destination = new Vector3(
+                transform.position.x,
+                transform.position.y - 0.5f,
+                -1);
+        }
 
         //set the caves text to the "caveText" variable
         caveTextObject.text = caveText;
+
+        //set the item pickups to the correct item
+        if (destination.y == 7)
+        {
+            itemPickup[1].SetActive(hasItem);
+
+            if (hasItem)
+            {
+                ItemPickup pickup = itemPickup[1].GetComponent<ItemPickup>();
+                pickup.cave = gameObject.GetComponent<CaveEnterance>();
+                if (itemLevel == 0)
+                {
+                    pickup.unlocks = true;
+                    pickup.givesItem = false;
+                    pickup.unlock = itemID;
+                    itemPickup[1].GetComponent<SpriteRenderer>().sprite = itemVisuals[1];
+                }
+                else
+                {
+                    pickup.unlocks = false;
+                    pickup.givesItem = true;
+                    pickup.item = itemID;
+                    pickup.itemLevel = itemLevel;
+                    itemPickup[1].GetComponent<SpriteRenderer>().sprite = itemVisuals[1];
+                }
+            }
+        }
         
         //wait a bit, then start un-fading the screen
         yield return new WaitForSeconds(screenFade.delay / 50);

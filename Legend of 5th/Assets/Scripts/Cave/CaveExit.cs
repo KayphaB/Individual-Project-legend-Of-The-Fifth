@@ -8,6 +8,7 @@ public class CaveExit : MonoBehaviour
     public GameObject camera;
     private ClassicFollow camScript;
     public ScreenFade screenFade;
+    public bool leaveUp;
     private bool duplicate;
     void Start()
     {
