@@ -293,12 +293,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85706227}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1208997391}
+  m_Father: {fileID: 1176218355}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1482444700, guid: 099c4c8f3f956e547bed3ee7bfbc8dee, type: 3}
+  m_Sprite: {fileID: 1715712805, guid: 099c4c8f3f956e547bed3ee7bfbc8dee, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -689,7 +689,7 @@ MonoBehaviour:
   - {fileID: 1946936063}
   - {fileID: 1738589015}
   - {fileID: 1827458563}
-  itemsUnlocked: 0100000000000000000000000000000000000000
+  itemsUnlocked: 0100000000000000010000000000000000000000
   selected: 0
   hovering: 0
   selector: {fileID: 1117767963}
@@ -43009,7 +43009,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'USE  J BUTTON FOR THIS:'
+  m_text: 'USE  K BUTTON FOR THIS:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21c5ccac124cd2249b0f273e85167e98, type: 2}
   m_sharedMaterial: {fileID: 3440293688179655259, guid: 21c5ccac124cd2249b0f273e85167e98, type: 2}
@@ -43228,7 +43228,7 @@ GameObject:
   - component: {fileID: 1031969546}
   - component: {fileID: 1031969545}
   m_Layer: 5
-  m_Name: Item Used (J)
+  m_Name: Item Used (K)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43279,12 +43279,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031969544}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1176218355}
+  m_Father: {fileID: 1208997391}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -43633,7 +43633,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "WASD - MOVE\n\nJ - USE ITEM\n   OR SELECT\n\nK - ATTACK\n\nENTER - OPEN\n  
+  m_text: "WASD - MOVE\n\nJ - ATTACK\n   OR SELECT\n\nK - USE ITEM\n\nENTER - OPEN\n  
     AND CLOSE\n   INVENTORY\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21c5ccac124cd2249b0f273e85167e98, type: 2}
@@ -44383,7 +44383,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1031969547}
+  - {fileID: 85706228}
   m_Father: {fileID: 2119130401}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -44567,7 +44567,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 85706228}
+  - {fileID: 1031969547}
   m_Father: {fileID: 2119130401}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -70490,7 +70490,12 @@ MonoBehaviour:
   enteringCave: 0
   usingWeapon: 0
   cameraTransition: 0
-  direction: 0
+  openInventory: 0
+  inven: {fileID: 144355937}
+  UI: {fileID: 808106019}
+  inventorySpeed: 5
+  shromb: {fileID: 7813069823413299943, guid: e19bb49d0f183244a89e06cbceec0845, type: 3}
+  direction: 1
 --- !u!4 &6314430813170397860
 Transform:
   m_ObjectHideFlags: 0

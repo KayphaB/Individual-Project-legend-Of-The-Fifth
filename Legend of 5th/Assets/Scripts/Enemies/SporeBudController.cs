@@ -43,138 +43,141 @@ public class SporeBudController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //turn red for a bit after getting hit
-        if (colorShift > 0)
+        if (!player.GetComponent<PlayerController>().openInventory)
         {
-            colorShift -= 1;
-            sr.color = hit;
-        }
-        else
-        {
-            sr.color = white;
-        }
-
-        //decay hitReset over time
-        if (hitReset > 0)
-        {
-            hitReset -= 1;
-        }
-        
-        //decay blastCooldown over time
-        if (blastCooldown > 0)
-        {
-            blastCooldown -= 1;
-        }
-
-        //die if health reaches zero
-        if (Health <= 0)
-        {
-            instantiatedPoof = Instantiate(poof, transform.position, Quaternion.identity);
-            if (dropChance >= Random.Range(0.0f, 1.0f))
+            //turn red for a bit after getting hit
+            if (colorShift > 0)
             {
-                instantiatedPoof.GetComponent<POOF>().spawn = lootTable[Random.Range(0, lootTable.Length)];
+                colorShift -= 1;
+                sr.color = hit;
             }
             else
             {
-                instantiatedPoof.GetComponent<POOF>().spawn = null;
+                sr.color = white;
             }
-            Destroy(this.gameObject);
-        }
 
-        //if the direction your moving is colliding then turn around
-        if (moveChecks[direction - 1].isColliding || moveChecks[direction - 1].outOfBounds)
-        {
-            if (direction == 1 || direction == 3)
+            //decay hitReset over time
+            if (hitReset > 0)
             {
-                direction += 1;
+                hitReset -= 1;
             }
-            else
-            {
-                direction -= 1;
-            }
-        }
 
-        //constantly move in the set direction unless stuck in the wall
-        if (!moveChecks[direction - 1].isColliding && !moveChecks[direction - 1].outOfBounds && blastCooldown <= blastDelay - 20)
-        {
-            if (direction == 1)
+            //decay blastCooldown over time
+            if (blastCooldown > 0)
             {
-                rb.MovePosition(transform.position + new Vector3(-speed * Time.deltaTime, 0, 0));
+                blastCooldown -= 1;
             }
-            else if (direction == 2)
-            {
-                rb.MovePosition(transform.position + new Vector3(speed * Time.deltaTime, 0, 0));
-            }
-            else if (direction == 3)
-            {
-                rb.MovePosition(transform.position + new Vector3(0, speed * Time.deltaTime, 0));
-            }
-            else if (direction == 4)
-            {
-                rb.MovePosition(transform.position + new Vector3(0, -speed * Time.deltaTime, 0));
-            }
-        }
 
-        //if the player is lined up with you and the blastCooldown is zero then blast the player
-        if (blastCooldown == 0)
-        {
-            if (Mathf.Abs(player.transform.position.x - transform.position.x) < 1 && (direction == 1 || direction == 2))
+            //die if health reaches zero
+            if (Health <= 0)
             {
-                if (player.transform.position.y < transform.position.y &&
-                    (!moveChecks[3].isColliding && !moveChecks[3].outOfBounds))
+                instantiatedPoof = Instantiate(poof, transform.position, Quaternion.identity);
+                if (dropChance >= Random.Range(0.0f, 1.0f))
                 {
-                    GameObject instaSpore = Instantiate(sporeBlast, 
-                        new Vector3(
-                            transform.position.x, 
-                            transform.position.y - 0.75f, 
-                            transform.position.z), 
-                        Quaternion.identity);
-                    instaSpore.GetComponent<SporeBlast>().direction = 4;
+                    instantiatedPoof.GetComponent<POOF>().spawn = lootTable[Random.Range(0, lootTable.Length)];
                 }
-                else if (!moveChecks[2].isColliding && !moveChecks[2].outOfBounds)
+                else
                 {
-                    GameObject instaSpore = Instantiate(sporeBlast,
-                        new Vector3(
-                            transform.position.x,
-                            transform.position.y + 0.75f,
-                            transform.position.z),
-                        Quaternion.identity);
-                    instaSpore.GetComponent<SporeBlast>().direction = 3;
+                    instantiatedPoof.GetComponent<POOF>().spawn = null;
                 }
-
-                blastCooldown = blastDelay;
+                Destroy(this.gameObject);
             }
 
-            if (Mathf.Abs(player.transform.position.y - transform.position.y) < 1 && (direction == 3 || direction == 4))
+            //if the direction your moving is colliding then turn around
+            if (moveChecks[direction - 1].isColliding || moveChecks[direction - 1].outOfBounds)
             {
-                if (player.transform.position.x < transform.position.x &&
-                    (!moveChecks[0].isColliding && !moveChecks[0].outOfBounds))
+                if (direction == 1 || direction == 3)
                 {
-                    GameObject instaSpore = Instantiate(sporeBlast,
-                        new Vector3(
-                            transform.position.x - 0.75f,
-                            transform.position.y,
-                            transform.position.z),
-                        Quaternion.identity);
-                    instaSpore.GetComponent<SporeBlast>().direction = 1;
+                    direction += 1;
                 }
-                else if (!moveChecks[1].isColliding && !moveChecks[1].outOfBounds)
+                else
                 {
-                    GameObject instaSpore = Instantiate(sporeBlast,
-                        new Vector3(
-                            transform.position.x + .75f,
-                            transform.position.y,
-                            transform.position.z),
-                        Quaternion.identity);
-                    instaSpore.GetComponent<SporeBlast>().direction = 2;
+                    direction -= 1;
                 }
-
-                blastCooldown = blastDelay;
             }
-        }
 
-        //set the animation
-        anim.SetBool("blasting", blastCooldown >= blastDelay - 20);
+            //constantly move in the set direction unless stuck in the wall
+            if (!moveChecks[direction - 1].isColliding && !moveChecks[direction - 1].outOfBounds && blastCooldown <= blastDelay - 20)
+            {
+                if (direction == 1)
+                {
+                    rb.MovePosition(transform.position + new Vector3(-speed * Time.deltaTime, 0, 0));
+                }
+                else if (direction == 2)
+                {
+                    rb.MovePosition(transform.position + new Vector3(speed * Time.deltaTime, 0, 0));
+                }
+                else if (direction == 3)
+                {
+                    rb.MovePosition(transform.position + new Vector3(0, speed * Time.deltaTime, 0));
+                }
+                else if (direction == 4)
+                {
+                    rb.MovePosition(transform.position + new Vector3(0, -speed * Time.deltaTime, 0));
+                }
+            }
+
+            //if the player is lined up with you and the blastCooldown is zero then blast the player
+            if (blastCooldown == 0)
+            {
+                if (Mathf.Abs(player.transform.position.x - transform.position.x) < 1 && (direction == 1 || direction == 2))
+                {
+                    if (player.transform.position.y < transform.position.y &&
+                        (!moveChecks[3].isColliding && !moveChecks[3].outOfBounds))
+                    {
+                        GameObject instaSpore = Instantiate(sporeBlast,
+                            new Vector3(
+                                transform.position.x,
+                                transform.position.y - 0.75f,
+                                transform.position.z),
+                            Quaternion.identity);
+                        instaSpore.GetComponent<SporeBlast>().direction = 4;
+                    }
+                    else if (!moveChecks[2].isColliding && !moveChecks[2].outOfBounds)
+                    {
+                        GameObject instaSpore = Instantiate(sporeBlast,
+                            new Vector3(
+                                transform.position.x,
+                                transform.position.y + 0.75f,
+                                transform.position.z),
+                            Quaternion.identity);
+                        instaSpore.GetComponent<SporeBlast>().direction = 3;
+                    }
+
+                    blastCooldown = blastDelay;
+                }
+
+                if (Mathf.Abs(player.transform.position.y - transform.position.y) < 1 && (direction == 3 || direction == 4))
+                {
+                    if (player.transform.position.x < transform.position.x &&
+                        (!moveChecks[0].isColliding && !moveChecks[0].outOfBounds))
+                    {
+                        GameObject instaSpore = Instantiate(sporeBlast,
+                            new Vector3(
+                                transform.position.x - 0.75f,
+                                transform.position.y,
+                                transform.position.z),
+                            Quaternion.identity);
+                        instaSpore.GetComponent<SporeBlast>().direction = 1;
+                    }
+                    else if (!moveChecks[1].isColliding && !moveChecks[1].outOfBounds)
+                    {
+                        GameObject instaSpore = Instantiate(sporeBlast,
+                            new Vector3(
+                                transform.position.x + .75f,
+                                transform.position.y,
+                                transform.position.z),
+                            Quaternion.identity);
+                        instaSpore.GetComponent<SporeBlast>().direction = 2;
+                    }
+
+                    blastCooldown = blastDelay;
+                }
+            }
+
+            //set the animation
+            anim.SetBool("blasting", blastCooldown >= blastDelay - 20);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

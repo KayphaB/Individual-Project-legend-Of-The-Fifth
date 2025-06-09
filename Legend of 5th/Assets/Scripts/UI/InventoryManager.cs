@@ -14,6 +14,11 @@ public class InventoryManager : MonoBehaviour
     public GameObject itemUsedVisual;
     public GameObject itemUsedJ;
 
+    private PlayerController pc;
+    private void Start()
+    {
+        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+    }
     void Update()
     {
         //place selectors and hoveror where appropriate
@@ -45,7 +50,7 @@ public class InventoryManager : MonoBehaviour
         itemUsedJ.GetComponent<Image>().sprite = itemVisuals[selected].GetComponent<Image>().sprite;
 
         //detect when A and D keys pressed to move hovering
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) && pc.openInventory)
         {
             hovering -= 1;
             if (hovering < 0)
@@ -62,7 +67,7 @@ public class InventoryManager : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) && pc.openInventory)
         {
             hovering += 1;
             if (hovering > 4)
@@ -81,7 +86,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         //detect when J key is pressed to make the hovering item selected
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.J) && pc.openInventory)
         {
             selected = hovering;
         }
