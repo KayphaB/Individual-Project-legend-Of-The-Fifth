@@ -13,12 +13,13 @@ public class CaveEnterance : MonoBehaviour
     public bool leaveUp;
     public string caveText;
 
-    public bool hasItem;
+    public bool[] hasItem;
     public GameObject[] itemPickup;
     public Sprite[] itemVisuals;
     public int[] itemLevel;
     public int[] itemID;
     public int[] cost;
+    public bool[] oneTimeBuy;
 
     public TMP_Text caveTextObject;
     public ScreenFade screenFade;
@@ -75,9 +76,9 @@ public class CaveEnterance : MonoBehaviour
         //set the item pickups to the correct item
         if (destination.y == 7)
         {
-            itemPickup[1].SetActive(hasItem);
+            itemPickup[1].SetActive(hasItem[1]);
 
-            if (hasItem)
+            if (hasItem[1])
             {
                 ItemPickup pickup = itemPickup[1].GetComponent<ItemPickup>();
                 pickup.cave = gameObject.GetComponent<CaveEnterance>();
@@ -86,6 +87,7 @@ public class CaveEnterance : MonoBehaviour
                     pickup.unlocks = true;
                     pickup.givesItem = false;
                     pickup.unlock = itemID[1];
+                    pickup.ID = 1;
                     itemPickup[1].GetComponent<SpriteRenderer>().sprite = itemVisuals[1];
                 }
                 else
@@ -93,6 +95,7 @@ public class CaveEnterance : MonoBehaviour
                     pickup.unlocks = false;
                     pickup.givesItem = true;
                     pickup.item = itemID[1];
+                    pickup.ID = 1;
                     pickup.itemLevel = itemLevel[1];
                     itemPickup[1].GetComponent<SpriteRenderer>().sprite = itemVisuals[1];
                 }
@@ -102,24 +105,29 @@ public class CaveEnterance : MonoBehaviour
         {
             for (int i = 0; i < 3; i++)
             {
-                ItemPickup pickup = itemPickup[i].GetComponent<ItemPickup>();
-                pickup.cave = gameObject.GetComponent<CaveEnterance>();
-                if (itemLevel[i] == 0)
+                if (hasItem[i])
                 {
-                    pickup.unlocks = true;
-                    pickup.givesItem = false;
-                    pickup.cost = cost[i];
-                    pickup.unlock = itemID[i];
-                    itemPickup[1].GetComponent<SpriteRenderer>().sprite = itemVisuals[i];
-                }
-                else
-                {
-                    pickup.unlocks = false;
-                    pickup.givesItem = true;
-                    pickup.cost = cost[i];
-                    pickup.item = itemID[i];
-                    pickup.itemLevel = itemLevel[i];
-                    itemPickup[1].GetComponent<SpriteRenderer>().sprite = itemVisuals[i];
+                    ItemPickup pickup = itemPickup[i].GetComponent<ItemPickup>();
+                    pickup.cave = gameObject.GetComponent<CaveEnterance>();
+                    if (itemLevel[i] == 0)
+                    {
+                        pickup.unlocks = true;
+                        pickup.givesItem = false;
+                        pickup.cost = cost[i];
+                        pickup.unlock = itemID[i];
+                        pickup.ID = i;
+                        itemPickup[i].GetComponent<SpriteRenderer>().sprite = itemVisuals[i];
+                    }
+                    else
+                    {
+                        pickup.unlocks = false;
+                        pickup.givesItem = true;
+                        pickup.cost = cost[i];
+                        pickup.item = itemID[i];
+                        pickup.itemLevel = itemLevel[i];
+                        pickup.ID = i;
+                        itemPickup[i].GetComponent<SpriteRenderer>().sprite = itemVisuals[i];
+                    }
                 }
             }
         }

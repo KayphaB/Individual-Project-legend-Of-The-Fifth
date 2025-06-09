@@ -655,6 +655,7 @@ MonoBehaviour:
   unlocks: 0
   unlock: 0
   cave: {fileID: 0}
+  ID: 0
   cost: 0
   costText: {fileID: 0}
 --- !u!1 &113531209
@@ -715,6 +716,7 @@ MonoBehaviour:
   - {fileID: 537675164, guid: bbfd833769b3cf54399222d975875b45, type: 3}
   delay: 5
   timer: 0
+  stage: 0
   on: 0
 --- !u!114 &113531212
 MonoBehaviour:
@@ -2173,7 +2175,7 @@ MonoBehaviour:
   caveExit: {fileID: 539482280}
   leaveUp: 1
   caveText: THE ROCK RAFT LIES PAST THE EAST MUSHROOM MAZE
-  hasItem: 0
+  hasItem: 000000
   itemPickup:
   - {fileID: 0}
   - {fileID: 110236404}
@@ -2185,6 +2187,7 @@ MonoBehaviour:
   itemLevel: 000000000000000000000000
   itemID: 000000000000000000000000
   cost: 000000000000000000000000
+  oneTimeBuy: 000000
   caveTextObject: {fileID: 914467487}
   screenFade: {fileID: 113531211}
 --- !u!61 &548836628
@@ -2765,8 +2768,9 @@ MonoBehaviour:
   unlocks: 0
   unlock: 0
   cave: {fileID: 0}
+  ID: 0
   cost: 0
-  costText: {fileID: 0}
+  costText: {fileID: 1160466780}
 --- !u!61 &732225251
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2914,19 +2918,20 @@ MonoBehaviour:
   caveExit: {fileID: 1847505187}
   leaveUp: 0
   caveText: YOU'LL NEED A RAFT TO ENTER THE FLOODED MYCOPURITE MINE
-  hasItem: 0
+  hasItem: 010101
   itemPickup:
   - {fileID: 912602710}
   - {fileID: 785201543}
   - {fileID: 732225248}
   itemVisuals:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  itemLevel: 000000000000000000000000
-  itemID: 000000000000000000000000
-  cost: 000000000000000000000000
-  caveTextObject: {fileID: 914467487}
+  - {fileID: 451443792, guid: 099c4c8f3f956e547bed3ee7bfbc8dee, type: 3}
+  - {fileID: 985883504, guid: 22a30ffba828893428221950df91beb8, type: 3}
+  - {fileID: 421107113, guid: 099c4c8f3f956e547bed3ee7bfbc8dee, type: 3}
+  itemLevel: 010000000000000000000000
+  itemID: 000000000300000002000000
+  cost: 140000001e00000032000000
+  oneTimeBuy: 000100
+  caveTextObject: {fileID: 1087198722}
   screenFade: {fileID: 113531211}
 --- !u!61 &741584013
 BoxCollider2D:
@@ -3161,8 +3166,9 @@ MonoBehaviour:
   unlocks: 0
   unlock: 0
   cave: {fileID: 0}
+  ID: 0
   cost: 0
-  costText: {fileID: 0}
+  costText: {fileID: 497359094}
 --- !u!61 &785201546
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3351,8 +3357,9 @@ MonoBehaviour:
   unlocks: 0
   unlock: 0
   cave: {fileID: 0}
+  ID: 0
   cost: 0
-  costText: {fileID: 0}
+  costText: {fileID: 1688469401}
 --- !u!61 &912602713
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -44872,7 +44879,7 @@ MonoBehaviour:
   caveExit: {fileID: 539482280}
   leaveUp: 0
   caveText: YO,
-  hasItem: 0
+  hasItem: 000000
   itemPickup:
   - {fileID: 0}
   - {fileID: 110236404}
@@ -44884,6 +44891,7 @@ MonoBehaviour:
   itemLevel: 000000000000000000000000
   itemID: 000000000000000000000000
   cost: 000000000000000000000000
+  oneTimeBuy: 000000
   caveTextObject: {fileID: 914467487}
   screenFade: {fileID: 113531211}
 --- !u!61 &1075148095
@@ -57657,6 +57665,46 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 58, y: -7, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 24
+      m_TileSpriteIndex: 23
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 59, y: -7, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 24
+      m_TileSpriteIndex: 23
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 60, y: -7, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 24
+      m_TileSpriteIndex: 23
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 61, y: -7, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 24
+      m_TileSpriteIndex: 23
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: -30, y: -6, z: 0}
     second:
       serializedVersion: 2
@@ -67177,7 +67225,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: e53d3532dc779ee4e8081131e4f4ee9f, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 4799daa999054164ebfb87a0ebcd9831, type: 2}
-  - m_RefCount: 108
+  - m_RefCount: 112
     m_Data: {fileID: 11400000, guid: d67dfbbc265cab84b9c53a787f8ebb0f, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: a75bd8523a156984d9c8434785fd8ad4, type: 2}
@@ -67250,7 +67298,7 @@ Tilemap:
     m_Data: {fileID: 1816143487, guid: 393af354fe6a04c44bb3b8b13b73bdde, type: 3}
   - m_RefCount: 27
     m_Data: {fileID: -462110446, guid: 393af354fe6a04c44bb3b8b13b73bdde, type: 3}
-  - m_RefCount: 108
+  - m_RefCount: 112
     m_Data: {fileID: -803481074, guid: 780656814c1a7fb409ffb4f969a000ed, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: -1620422717, guid: 9f28d7e3d522a7a42a8823523a99fd5b, type: 3}
@@ -67279,7 +67327,7 @@ Tilemap:
   - m_RefCount: 3
     m_Data: {fileID: 1862361623, guid: 9f28d7e3d522a7a42a8823523a99fd5b, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 1662
+  - m_RefCount: 1666
     m_Data:
       e00: 1
       e01: 0
@@ -67298,7 +67346,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 1662
+  - m_RefCount: 1666
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -72382,7 +72430,7 @@ MonoBehaviour:
   caveExit: {fileID: 539482280}
   leaveUp: 0
   caveText: TAKE THIS WEAPON, FIND AMINITUS AND SLAY HIM
-  hasItem: 1
+  hasItem: 000100
   itemPickup:
   - {fileID: 0}
   - {fileID: 110236404}
@@ -72394,6 +72442,7 @@ MonoBehaviour:
   itemLevel: 000000000000000000000000
   itemID: 000000000000000000000000
   cost: 000000000000000000000000
+  oneTimeBuy: 000100
   caveTextObject: {fileID: 914467487}
   screenFade: {fileID: 113531211}
 --- !u!4 &7688594659828795440

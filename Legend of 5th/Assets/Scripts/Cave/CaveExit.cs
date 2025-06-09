@@ -30,8 +30,10 @@ public class CaveExit : MonoBehaviour
 
     IEnumerator CaveLeave(Collider2D player)
     {
+        //freeze player controls
+        player.GetComponent<PlayerController>().enteringCave = true;
+
         //freeze player movement and wait until screen fades to black
-        player.GetComponent<PlayerController>().frozen = true;
         screenFade.timer = 0;
         screenFade.on = true;
         yield return new WaitForSeconds(screenFade.delay / 50 * 4f);
@@ -50,7 +52,7 @@ public class CaveExit : MonoBehaviour
         yield return new WaitForSeconds(screenFade.delay / 50 * 3f);
 
         //un-freeze player controls
-        player.GetComponent<PlayerController>().frozen = false;
+        player.GetComponent<PlayerController>().enteringCave = false;
 
         duplicate = false;
     }

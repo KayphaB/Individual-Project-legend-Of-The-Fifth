@@ -8,7 +8,7 @@ public class ScreenFade : MonoBehaviour
     public Sprite[] sprites;
     public float delay;
     public float timer;
-    private int stage;
+    public int stage;
     public bool on;
     private Image image;
     private Color alphaChange;

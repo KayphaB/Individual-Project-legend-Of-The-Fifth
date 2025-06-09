@@ -15,6 +15,7 @@ public class ItemPickup : MonoBehaviour
     public int unlock;
 
     public CaveEnterance cave;
+    public int ID;
 
     public int cost;
     public TextMeshPro costText;
@@ -40,9 +41,9 @@ public class ItemPickup : MonoBehaviour
                 um.unlockables[unlock] = true;
             }
 
-            if (cave != null)
+            if (cave != null && cave.oneTimeBuy[ID])
             {
-                cave.hasItem = false;
+                cave.hasItem[ID] = false;
             }
 
             other.GetComponent<PlayerInventory>().mycopurite -= cost;
