@@ -10,6 +10,7 @@ TagManager:
   - Environment
   - Pickup
   - Explosion
+  - Dust
   layers:
   - Default
   - TransparentFX
