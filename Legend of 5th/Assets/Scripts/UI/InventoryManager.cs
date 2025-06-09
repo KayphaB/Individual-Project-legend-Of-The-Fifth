@@ -14,6 +14,9 @@ public class InventoryManager : MonoBehaviour
     public GameObject itemUsedVisual;
     public GameObject itemUsedJ;
 
+    public Sprite[] level1Visuals;
+    public Sprite[] level2Visuals;
+
     private PlayerController pc;
     private void Start()
     {
@@ -42,6 +45,19 @@ public class InventoryManager : MonoBehaviour
             else
             {
                 itemVisuals[i].SetActive(false);
+            }
+        }
+
+        //set items to the appropriate sprite
+        for (int i = 0; i < itemVisuals.Length; i++)
+        {
+            if (itemsUnlocked[i] == 2)
+            {
+                itemVisuals[i].GetComponent<Image>().sprite = level2Visuals[i];
+            }
+            else
+            {
+                itemVisuals[i].GetComponent<Image>().sprite = level1Visuals[i];
             }
         }
 

@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public float inventorySpeed;
 
     public GameObject shromb;
+    public GameObject dust;
 
     private Animator anim;
     public int direction;
@@ -76,14 +77,14 @@ public class PlayerController : MonoBehaviour
             {
                 UI.anchoredPosition = new Vector3(
                     UI.anchoredPosition.x,
-                    UI.anchoredPosition.y - inventorySpeed);
+                    UI.anchoredPosition.y - inventorySpeed * Time.deltaTime);
             }
         }
         else if (UI.anchoredPosition.y < 0)
         {
             UI.anchoredPosition = new Vector3(
                 UI.anchoredPosition.x,
-                UI.anchoredPosition.y + inventorySpeed);
+                UI.anchoredPosition.y + inventorySpeed * Time.deltaTime);
         }
         else
         {
@@ -119,6 +120,33 @@ public class PlayerController : MonoBehaviour
                         transform.position.y + offsetY,
                         -0.5f);
                 Instantiate(shromb, spawnPos, Quaternion.identity);
+            }
+            else if (inven.selected == 1 && GetComponent<PlayerInventory>().mycopurite > 0)
+            {
+                GetComponent<PlayerInventory>().mycopurite--;
+                float offsetX = 0;
+                float offsetY = 0;
+                if (direction == 1)
+                {
+                    offsetX = -0.8f;
+                }
+                else if (direction == 2)
+                {
+                    offsetX = 0.8f;
+                }
+                else if (direction == 3)
+                {
+                    offsetY = 0.8f;
+                }
+                else
+                {
+                    offsetY = -0.8f;
+                }
+                Vector3 spawnPos = new Vector3(
+                        transform.position.x + offsetX,
+                        transform.position.y + offsetY,
+                        -0.5f);
+                Instantiate(dust, spawnPos, Quaternion.identity);
             }
         }
     }
