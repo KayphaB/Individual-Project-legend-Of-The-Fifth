@@ -12,6 +12,7 @@ TagManager:
   - Explosion
   - Dust
   - Dungeon 1 Door
+  - Projectile
   layers:
   - Default
   - TransparentFX

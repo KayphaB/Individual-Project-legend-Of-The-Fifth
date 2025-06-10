@@ -169,7 +169,14 @@ public class MineBatController : MonoBehaviour
         }
         else if (other.CompareTag("Explosion") && hitReset <= 0)
         {
-            Health -= 5;
+            Health -= 6;
+            hitReset = 30;
+            colorShift = 5;
+        }
+        else if (other.CompareTag("Projectile") && hitReset <= 0)
+        {
+            Health -= (int) other.GetComponent<Projectile>().damage;
+            Destroy(other.gameObject);
             hitReset = 30;
             colorShift = 5;
         }

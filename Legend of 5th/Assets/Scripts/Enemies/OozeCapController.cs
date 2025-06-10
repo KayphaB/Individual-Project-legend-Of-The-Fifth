@@ -187,5 +187,12 @@ public class OozeCapController : MonoBehaviour
             hitReset = 30;
             colorShift = 5;
         }
+        else if (other.CompareTag("Projectile") && hitReset <= 0)
+        {
+            Health -= (int)other.GetComponent<Projectile>().damage;
+            Destroy(other.gameObject);
+            hitReset = 30;
+            colorShift = 5;
+        }
     }
 }

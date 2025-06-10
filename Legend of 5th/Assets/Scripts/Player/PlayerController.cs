@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
 
     public GameObject shromb;
     public GameObject dust;
+    public GameObject projectile;
+    public GameObject projectileTwo;
+    private float projectileCooldown;
 
     private Animator anim;
     public int direction;
@@ -130,9 +133,12 @@ public class PlayerController : MonoBehaviour
                         -0.5f);
                 Instantiate(shromb, spawnPos, Quaternion.identity);
             }
-            else if (inven.selected == 1 && GetComponent<PlayerInventory>().mycopurite > 0)
+            else if (inven.selected == 1 && (GetComponent<PlayerInventory>().mycopurite > 0 || inven.itemsUnlocked[1] == 2))
             {
-                GetComponent<PlayerInventory>().mycopurite--;
+                if (inven.itemsUnlocked[1] == 1)
+                {
+                    GetComponent<PlayerInventory>().mycopurite--;
+                }
                 float offsetX = 0;
                 float offsetY = 0;
                 if (direction == 1)
@@ -162,13 +168,67 @@ public class PlayerController : MonoBehaviour
                 inven.itemsUnlocked[2] = 1;
                 transform.GetChild(0).GetComponent<PlayerHealth>().HP = transform.GetChild(0).GetComponent<PlayerHealth>().maxHP;
             }
+            else if (inven.selected == 4 && GetComponent<PlayerInventory>().mycopurite > 0 && projectileCooldown == 0)
+            {
+                GetComponent<PlayerInventory>().mycopurite--;
+                float offsetX = 0;
+                float offsetY = 0;
+                if (direction == 1)
+                {
+                    offsetX = -0.8f;
+                }
+                else if (direction == 2)
+                {
+                    offsetX = 0.8f;
+                }
+                else if (direction == 3)
+                {
+                    offsetY = 0.8f;
+                }
+                else
+                {
+                    offsetY = -0.8f;
+                }
+                Vector3 spawnPos = new Vector3(
+                        transform.position.x + offsetX,
+                        transform.position.y + offsetY,
+                        -0.5f);
+
+                if (inven.itemsUnlocked[4] == 2)
+                {
+                    GameObject proj = Instantiate(projectileTwo, spawnPos, Quaternion.identity);
+                    proj.GetComponent<Projectile>().direction = direction;
+                    projectileCooldown = 40;
+                }
+                else
+                {
+                    GameObject proj = Instantiate(projectile, spawnPos, Quaternion.identity);
+                    proj.GetComponent<Projectile>().direction = direction;
+                    projectileCooldown = 40;
+                }
+            }
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void FixedUpdate()
     {
-        woodRaft.SetActive(other == water.GetComponent<TilemapCollider2D>() && unlock.unlockables[3]);
-        rockRaft.SetActive(other == lava.GetComponent<TilemapCollider2D>() && unlock.unlockables[4]);
+        if (projectileCooldown > 0)
+        {
+            projectileCooldown--;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other == water.GetComponent<TilemapCollider2D>() && unlock.unlockables[3])
+        {
+            woodRaft.SetActive(true);
+        }
+
+        if (other == lava.GetComponent<TilemapCollider2D>() && unlock.unlockables[4])
+        {
+            rockRaft.SetActive(true);
+        }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
