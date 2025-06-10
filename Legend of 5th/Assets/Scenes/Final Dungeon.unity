@@ -1548,7 +1548,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  frozen: 0
+  enteringCave: 0
+  usingWeapon: 0
+  cameraTransition: 0
+  openInventory: 0
+  inven: {fileID: 0}
+  UI: {fileID: 0}
+  inventorySpeed: 0
+  unlock: {fileID: 0}
+  shromb: {fileID: 0}
+  dust: {fileID: 0}
+  projectile: {fileID: 0}
+  projectileTwo: {fileID: 0}
   direction: 0
+  woodRaft: {fileID: 0}
+  water: {fileID: 0}
+  rockRaft: {fileID: 0}
+  lava: {fileID: 0}
 --- !u!212 &1398380571
 SpriteRenderer:
   m_ObjectHideFlags: 0
