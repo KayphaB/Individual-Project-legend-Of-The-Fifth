@@ -17,6 +17,8 @@ public class ClassicFollow : MonoBehaviour
     private Vector3 target;
 
     public int[] enemiesPerRoom;
+    public GameObject keyBat;
+    public bool[] keyBatHere;
     public GameObject[] bogEnemies;
     public GameObject[] lavaEnemies;
     public GameObject[] d1Enemies;
@@ -146,8 +148,11 @@ public class ClassicFollow : MonoBehaviour
         //double check to see if you just entered a new room
         if (newRoom && !playerC.cameraTransition && transform.position.x < 50)
         {
-            if (Mathf.Floor((transform.position.x - offsetX) / screenLengthX) +
-                Mathf.Floor((transform.position.y - offsetY) / screenLengthY) * 5 + 61 == 43 && 
+            int roomID = (int)(
+                    Mathf.Floor((transform.position.x - offsetX) / screenLengthX) +
+                    Mathf.Floor((transform.position.y - offsetY) / screenLengthY) * 5 + 61);
+
+            if (roomID == 43 && 
                 !d1Beaten)
             {
                 GameObject instantiatedPoof = Instantiate(poof, new Vector3(40, -46, -6), Quaternion.identity);
@@ -155,9 +160,7 @@ public class ClassicFollow : MonoBehaviour
             }
             else
             {
-                int spawnNum = enemiesPerRoom[(int)(
-                    Mathf.Floor((transform.position.x - offsetX) / screenLengthX) +
-                    Mathf.Floor((transform.position.y - offsetY) / screenLengthY) * 5 + 61)];
+                int spawnNum = enemiesPerRoom[roomID];
 
                 GameObject[] enemiesToSpawn;
 
@@ -179,6 +182,12 @@ public class ClassicFollow : MonoBehaviour
                 {
                     GameObject instantiatedPoof = Instantiate(poof, GetRandomPos(transform.position), Quaternion.identity);
                     instantiatedPoof.GetComponent<POOF>().spawn = enemiesToSpawn[Random.Range(0, enemiesToSpawn.Length)];
+                }
+
+                if (keyBatHere[roomID])
+                {
+                    GameObject instantiatedPoof = Instantiate(poof, GetRandomPos(transform.position), Quaternion.identity);
+                    instantiatedPoof.GetComponent<POOF>().spawn = keyBat;
                 }
             }
         }

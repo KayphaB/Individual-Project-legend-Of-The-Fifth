@@ -80,6 +80,7 @@ public class BossBat : MonoBehaviour
                 {
                     instantiatedPoof.GetComponent<POOF>().spawn = null;
                 }
+                Destroy(GameObject.FindGameObjectWithTag("Dungeon 1 Door"));
                 Destroy(this.gameObject);
             }
 

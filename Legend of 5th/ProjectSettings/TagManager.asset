@@ -11,6 +11,7 @@ TagManager:
   - Pickup
   - Explosion
   - Dust
+  - Dungeon 1 Door
   layers:
   - Default
   - TransparentFX
