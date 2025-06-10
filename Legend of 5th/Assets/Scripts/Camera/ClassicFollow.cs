@@ -20,6 +20,8 @@ public class ClassicFollow : MonoBehaviour
     public GameObject[] bogEnemies;
     public GameObject[] lavaEnemies;
     public GameObject[] d1Enemies;
+    public GameObject d1Boss;
+    public bool d1Beaten;
     public GameObject poof;
     void Start()
     {
@@ -144,30 +146,40 @@ public class ClassicFollow : MonoBehaviour
         //double check to see if you just entered a new room
         if (newRoom && !playerC.cameraTransition && transform.position.x < 50)
         {
-            int spawnNum = enemiesPerRoom[(int) (
-                Mathf.Floor((transform.position.x - offsetX) / screenLengthX) + 
-                Mathf.Floor((transform.position.y - offsetY) / screenLengthY) * 5 + 61)];
-
-            GameObject[] enemiesToSpawn;
-
-            if (player.transform.position.y < -30)
+            if (Mathf.Floor((transform.position.x - offsetX) / screenLengthX) +
+                Mathf.Floor((transform.position.y - offsetY) / screenLengthY) * 5 + 61 == 43 && 
+                !d1Beaten)
             {
-                enemiesToSpawn = d1Enemies;
-            }
-            else if (player.transform.position.x < -6)
-            {
-                enemiesToSpawn = lavaEnemies;
+                GameObject instantiatedPoof = Instantiate(poof, new Vector3(40, -46, -6), Quaternion.identity);
+                instantiatedPoof.GetComponent<POOF>().spawn = d1Boss;
             }
             else
             {
-                enemiesToSpawn = bogEnemies;
-            }
+                int spawnNum = enemiesPerRoom[(int)(
+                    Mathf.Floor((transform.position.x - offsetX) / screenLengthX) +
+                    Mathf.Floor((transform.position.y - offsetY) / screenLengthY) * 5 + 61)];
 
-            //spawn enemies in new room
-            for (int i = 0; i < spawnNum; i++)
-            {
-                GameObject instantiatedPoof = Instantiate(poof, GetRandomPos(transform.position), Quaternion.identity);
-                instantiatedPoof.GetComponent<POOF>().spawn = enemiesToSpawn[Random.Range(0, enemiesToSpawn.Length)];
+                GameObject[] enemiesToSpawn;
+
+                if (player.transform.position.y < -30)
+                {
+                    enemiesToSpawn = d1Enemies;
+                }
+                else if (player.transform.position.x < -6)
+                {
+                    enemiesToSpawn = lavaEnemies;
+                }
+                else
+                {
+                    enemiesToSpawn = bogEnemies;
+                }
+
+                //spawn enemies in new room
+                for (int i = 0; i < spawnNum; i++)
+                {
+                    GameObject instantiatedPoof = Instantiate(poof, GetRandomPos(transform.position), Quaternion.identity);
+                    instantiatedPoof.GetComponent<POOF>().spawn = enemiesToSpawn[Random.Range(0, enemiesToSpawn.Length)];
+                }
             }
         }
     }

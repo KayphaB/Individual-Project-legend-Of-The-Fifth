@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MineBatController : MonoBehaviour
+public class BossBat : MonoBehaviour
 {
     public int Health;
     private GameObject instantiatedPoof;
@@ -15,6 +15,7 @@ public class MineBatController : MonoBehaviour
     public float maxSpeed;
     public float minSpeed;
     private Animator anim;
+    public GameObject summonBat;
 
     public int direction = 1;
     private Rigidbody2D rb;
@@ -40,8 +41,8 @@ public class MineBatController : MonoBehaviour
         }
 
         transform.position = new Vector3(
-            transform.position.x,
-            transform.position.y,
+            transform.position.x, 
+            transform.position.y, 
             -6);
     }
 
@@ -69,6 +70,7 @@ public class MineBatController : MonoBehaviour
             //die if health reaches zero
             if (Health <= 0)
             {
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ClassicFollow>().d1Beaten = true;
                 instantiatedPoof = Instantiate(poof, transform.position, Quaternion.identity);
                 if (dropChance >= Random.Range(0.0f, 1.0f))
                 {
@@ -98,34 +100,41 @@ public class MineBatController : MonoBehaviour
 
             //change speed
             speedChange += speedChangeFreq;
-            if (speedChange >= 1 - maxSpeed / 100 * minSpeed)
+            if (speedChange >= 1 - (maxSpeed / 100 * minSpeed))
             {
-                speedChange = -(1 - maxSpeed / 100 * minSpeed);
+                speedChange = -(1 - (maxSpeed / 100 * minSpeed));
             }
-            float speed = maxSpeed * (Mathf.Abs(speedChange) + maxSpeed / 100 * minSpeed);
-            
+            if (Mathf.Abs(speedChange) <= speedChangeFreq / 2)
+            {
+                for (int i = 0;i < 3;i++)
+                {
+                    Instantiate(summonBat, transform.position, Quaternion.identity);
+                }
+            }
+            float speed = maxSpeed * (Mathf.Abs(speedChange) + (maxSpeed / 100) * minSpeed);
+
             anim.speed = speed;
 
             //constantly move in the set direction unless stuck in the wall
-            if (!moveChecks[direction - 1].outOfBounds
-                && !moveChecks[altDirection - 1].outOfBounds)
+            if (!moveChecks[direction - 1].outOfBounds && 
+                !moveChecks[altDirection - 1].outOfBounds)
             {
                 if (direction == 1)
                 {
-                    rb.MovePosition(rb.position + new Vector2(-speed * Time.deltaTime, speed * Time.deltaTime));
+                    rb.MovePosition(transform.position + new Vector3(-speed * Time.deltaTime, speed * Time.deltaTime, 0));
                 }
                 else if (direction == 2)
                 {
-                    rb.MovePosition(rb.position + new Vector2(speed * Time.deltaTime, -speed * Time.deltaTime));
+                    rb.MovePosition(transform.position + new Vector3(speed * Time.deltaTime, -speed * Time.deltaTime, 0));
                 }
 
                 if (direction == 3)
                 {
-                    rb.MovePosition(rb.position + new Vector2(speed * Time.deltaTime, speed * Time.deltaTime));
+                    rb.MovePosition(transform.position + new Vector3(speed * Time.deltaTime, speed * Time.deltaTime, 0));
                 }
                 else if (direction == 4)
                 {
-                    rb.MovePosition(rb.position + new Vector2(- speed * Time.deltaTime, -speed * Time.deltaTime));
+                    rb.MovePosition(transform.position + new Vector3(-speed * Time.deltaTime, -speed * Time.deltaTime, 0));
                 }
             }
 
@@ -169,10 +178,13 @@ public class MineBatController : MonoBehaviour
         }
         else if (other.CompareTag("Explosion") && hitReset <= 0)
         {
-            Health -= 5;
+            Health -= 10;
             hitReset = 30;
             colorShift = 5;
         }
+        else if (other.CompareTag("Dust"))
+        {
+            Health = 0;
+        }
     }
 }
-

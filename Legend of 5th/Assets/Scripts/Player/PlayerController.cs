@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,11 +17,18 @@ public class PlayerController : MonoBehaviour
     public RectTransform UI;
     public float inventorySpeed;
 
+    public UnlockablesManager unlock;
+
     public GameObject shromb;
     public GameObject dust;
 
     private Animator anim;
     public int direction;
+
+    public GameObject woodRaft;
+    public GameObject water;
+    public GameObject rockRaft;
+    public GameObject lava;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -154,6 +162,24 @@ public class PlayerController : MonoBehaviour
                 inven.itemsUnlocked[2] = 1;
                 transform.GetChild(0).GetComponent<PlayerHealth>().HP = transform.GetChild(0).GetComponent<PlayerHealth>().maxHP;
             }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        woodRaft.SetActive(other == water.GetComponent<TilemapCollider2D>() && unlock.unlockables[3]);
+        rockRaft.SetActive(other == lava.GetComponent<TilemapCollider2D>() && unlock.unlockables[4]);
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other ==  water.GetComponent<TilemapCollider2D>())
+        {
+            woodRaft.SetActive(false);
+        }
+
+        if (other == lava.GetComponent<TilemapCollider2D>())
+        {
+            rockRaft.SetActive(false);
         }
     }
 }

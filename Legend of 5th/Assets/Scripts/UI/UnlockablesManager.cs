@@ -45,6 +45,7 @@ public class UnlockablesManager : MonoBehaviour
         {
             chain.weapon = 2;
             unlockables[0] = false;
+            unlockables[2] = false;
         }
         else if (unlockables[0])
         {

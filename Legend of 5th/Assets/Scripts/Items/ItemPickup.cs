@@ -9,6 +9,7 @@ public class ItemPickup : MonoBehaviour
     public bool givesItem;
     public int item;
     public int itemLevel;
+    public bool isHeartContainer;
 
     public UnlockablesManager um;
     public bool unlocks;
@@ -31,14 +32,22 @@ public class ItemPickup : MonoBehaviour
     {
         if (other.CompareTag("Player") && other.GetComponent<PlayerInventory>().mycopurite >= cost)
         {
-            if (givesItem)
+            if (isHeartContainer)
             {
-                im.itemsUnlocked[item] = itemLevel;
+                other.transform.GetChild(0).GetComponent<PlayerHealth>().maxHP += 1;
+                other.transform.GetChild(0).GetComponent<PlayerHealth>().HP = 100;
             }
-
-            if (unlocks)
+            else
             {
-                um.unlockables[unlock] = true;
+                if (givesItem)
+                {
+                    im.itemsUnlocked[item] = itemLevel;
+                }
+
+                if (unlocks)
+                {
+                    um.unlockables[unlock] = true;
+                }
             }
 
             if (cave != null && cave.oneTimeBuy[ID])

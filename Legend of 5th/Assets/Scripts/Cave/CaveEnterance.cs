@@ -12,6 +12,7 @@ public class CaveEnterance : MonoBehaviour
     public GameObject caveExit;
     public bool leaveUp;
     public string caveText;
+    public UnlockablesManager unlockables;
 
     public bool[] hasItem;
     public GameObject[] itemPickup;
@@ -20,6 +21,7 @@ public class CaveEnterance : MonoBehaviour
     public int[] itemID;
     public int[] cost;
     public bool[] oneTimeBuy;
+    public bool[] isHeartContainer;
 
     public TMP_Text caveTextObject;
     public ScreenFade screenFade;
@@ -82,6 +84,7 @@ public class CaveEnterance : MonoBehaviour
             {
                 ItemPickup pickup = itemPickup[1].GetComponent<ItemPickup>();
                 pickup.cave = gameObject.GetComponent<CaveEnterance>();
+                pickup.isHeartContainer = isHeartContainer[1];
                 if (itemLevel[1] == 0)
                 {
                     pickup.unlocks = true;
@@ -109,6 +112,7 @@ public class CaveEnterance : MonoBehaviour
                 {
                     ItemPickup pickup = itemPickup[i].GetComponent<ItemPickup>();
                     pickup.cave = gameObject.GetComponent<CaveEnterance>();
+                    pickup.isHeartContainer = isHeartContainer[i];
                     if (itemLevel[i] == 0)
                     {
                         pickup.unlocks = true;
@@ -131,9 +135,24 @@ public class CaveEnterance : MonoBehaviour
                 }
             }
         }
+        else if (destination.y == -17)
+        {
+            itemPickup[1].SetActive(unlockables.unlockables[0] && unlockables.unlockables[2]);
 
-            //wait a bit, then start un-fading the screen
-            yield return new WaitForSeconds(screenFade.delay / 50);
+            ItemPickup pickup = itemPickup[1].GetComponent<ItemPickup>();
+            pickup.cave = gameObject.GetComponent<CaveEnterance>();
+            pickup.isHeartContainer = isHeartContainer[1];
+            pickup.unlocks = true;
+            pickup.givesItem = false;
+            pickup.cost = 0;
+            pickup.unlock = itemID[1];
+            pickup.ID = 1;
+            itemPickup[1].GetComponent<SpriteRenderer>().sprite = itemVisuals[1];
+        }
+
+        //wait a bit, then start un-fading the screen
+        yield return new WaitForSeconds(screenFade.delay / 50);
+
         screenFade.timer = 0;
         screenFade.on = false;
         yield return new WaitForSeconds(screenFade.delay / 50 * 3f);
