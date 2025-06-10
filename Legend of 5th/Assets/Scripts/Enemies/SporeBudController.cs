@@ -120,7 +120,7 @@ public class SporeBudController : MonoBehaviour
             //if the player is lined up with you and the blastCooldown is zero then blast the player
             if (blastCooldown == 0)
             {
-                if (Mathf.Abs(player.transform.position.x - transform.position.x) < 1 && (direction == 1 || direction == 2))
+                if (Mathf.Abs(player.transform.position.x - transform.position.x) < 0.5f && (direction == 1 || direction == 2))
                 {
                     if (player.transform.position.y < transform.position.y &&
                         (!moveChecks[3].isColliding && !moveChecks[3].outOfBounds))
@@ -147,7 +147,7 @@ public class SporeBudController : MonoBehaviour
                     blastCooldown = blastDelay;
                 }
 
-                if (Mathf.Abs(player.transform.position.y - transform.position.y) < 1 && (direction == 3 || direction == 4))
+                if (Mathf.Abs(player.transform.position.y - transform.position.y) < 0.5f && (direction == 3 || direction == 4))
                 {
                     if (player.transform.position.x < transform.position.x &&
                         (!moveChecks[0].isColliding && !moveChecks[0].outOfBounds))
@@ -192,6 +192,12 @@ public class SporeBudController : MonoBehaviour
         else if (other.CompareTag("Weapon+") && hitReset <= 0)
         {
             Health -= 4;
+            hitReset = 30;
+            colorShift = 5;
+        }
+        else if (other.CompareTag("Explosion") && hitReset <= 0)
+        {
+            Health -= 5;
             hitReset = 30;
             colorShift = 5;
         }

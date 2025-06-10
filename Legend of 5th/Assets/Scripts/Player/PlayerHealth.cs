@@ -6,6 +6,13 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHP = 3;
     public float HP = 3;
+
+    public ScreenFade screenFade;
+    public GameObject deathScreen;
+    private Vector3 checkpoint;
+    private Vector3 cameraPoint = new Vector3(0, 2.03f, -10);
+    private float savedHealth = 3;
+    public GameObject camera;
     
     public float immuneFrames;
 
@@ -25,6 +32,24 @@ public class PlayerHealth : MonoBehaviour
         {
             HP = maxHP;
         }
+
+        //when dead for 1 second, fade away the screen and show death screen
+        deathScreen.SetActive(false);
+        if (HP <= -100)
+        {
+            screenFade.on = true;
+            if (screenFade.stage == 4)
+            {
+                deathScreen.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    HP = savedHealth;
+                    transform.parent.transform.position = checkpoint;
+                    camera.transform.position = cameraPoint;
+                    screenFade.on = false;
+                }
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -43,6 +68,11 @@ public class PlayerHealth : MonoBehaviour
         {
             immuneFrames -= 1;
         }
+
+        if (HP <= 0)
+        {
+            HP -= 1;
+        }
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -53,5 +83,12 @@ public class PlayerHealth : MonoBehaviour
             immuneFrames = 40;
             hitFrames = 10;
         }
+    }
+
+    public void SetCheckpoint()
+    {
+        cameraPoint = camera.transform.position;
+        checkpoint = transform.position;
+        savedHealth = HP;
     }
 }

@@ -147,7 +147,7 @@ MonoBehaviour:
   direction: 2
   speed: 4
   damage: 0.5
-  blockable: 0
+  blockable: 1
 --- !u!50 &1690059843870490223
 Rigidbody2D:
   serializedVersion: 4

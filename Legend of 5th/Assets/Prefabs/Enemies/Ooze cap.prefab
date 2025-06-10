@@ -411,7 +411,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
 --- !u!114 &2205429262337866687
 MonoBehaviour:
@@ -433,7 +433,7 @@ MonoBehaviour:
   - {fileID: 6773592966193457918, guid: 5f7ef624e75e5ec45a04fd8cbe116291, type: 3}
   - {fileID: 6773592966193457918, guid: 5f7ef624e75e5ec45a04fd8cbe116291, type: 3}
   - {fileID: 6773592966193457918, guid: 5f7ef624e75e5ec45a04fd8cbe116291, type: 3}
-  - {fileID: 7958593739089380081, guid: a6ebb86a891cc194db1bb0b7ce9fc547, type: 3}
+  - {fileID: 6773592966193457918, guid: 5f7ef624e75e5ec45a04fd8cbe116291, type: 3}
   - {fileID: 7958593739089380081, guid: a6ebb86a891cc194db1bb0b7ce9fc547, type: 3}
   - {fileID: 7958593739089380081, guid: a6ebb86a891cc194db1bb0b7ce9fc547, type: 3}
   dropChance: 0.5

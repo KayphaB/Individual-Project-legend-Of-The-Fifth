@@ -19,7 +19,7 @@ public class MiniMap : MonoBehaviour
 
     void Update()
     {
-        if (player.transform.position.x < caveX)
+        if (player.transform.position.x < caveX && player.transform.position.y > -30)
         {
             rt.anchoredPosition = new Vector3(
                 Mathf.Round(player.transform.position.x / screenLengthX) * 70 + offsetX,

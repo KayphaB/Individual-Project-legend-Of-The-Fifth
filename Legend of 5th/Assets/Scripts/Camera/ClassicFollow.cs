@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ClassicFollow : MonoBehaviour
@@ -16,7 +17,9 @@ public class ClassicFollow : MonoBehaviour
     private Vector3 target;
 
     public int[] enemiesPerRoom;
-    public GameObject[] enemiesToSpawn;
+    public GameObject[] bogEnemies;
+    public GameObject[] lavaEnemies;
+    public GameObject[] d1Enemies;
     public GameObject poof;
     void Start()
     {
@@ -143,10 +146,25 @@ public class ClassicFollow : MonoBehaviour
         {
             int spawnNum = enemiesPerRoom[(int) (
                 Mathf.Floor((transform.position.x - offsetX) / screenLengthX) + 
-                Mathf.Floor((transform.position.y - offsetY) / screenLengthY) * 4 + 9)];
+                Mathf.Floor((transform.position.y - offsetY) / screenLengthY) * 5 + 61)];
+
+            GameObject[] enemiesToSpawn;
+
+            if (player.transform.position.y < -30)
+            {
+                enemiesToSpawn = d1Enemies;
+            }
+            else if (player.transform.position.x < -6)
+            {
+                enemiesToSpawn = lavaEnemies;
+            }
+            else
+            {
+                enemiesToSpawn = bogEnemies;
+            }
 
             //spawn enemies in new room
-            for (int i = 0;i < spawnNum;i++)
+            for (int i = 0; i < spawnNum; i++)
             {
                 GameObject instantiatedPoof = Instantiate(poof, GetRandomPos(transform.position), Quaternion.identity);
                 instantiatedPoof.GetComponent<POOF>().spawn = enemiesToSpawn[Random.Range(0, enemiesToSpawn.Length)];

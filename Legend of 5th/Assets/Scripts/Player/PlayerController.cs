@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        frozen = enteringCave || usingWeapon || cameraTransition || openInventory;
+        frozen = enteringCave || usingWeapon || cameraTransition || openInventory || transform.GetChild(0).GetComponent<PlayerHealth>().HP <= 0;
 
         anim.speed = 1;
         if (Input.GetKey(KeyCode.A) && !frozen)
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             //if no walking keys pressed and not attacking, stop animation
-            if (GetComponent<ChainController>().length == 0)
+            if (GetComponent<ChainController>().length == 0 && !(transform.GetChild(0).GetComponent<PlayerHealth>().HP <= 0))
             {
                 anim.speed = 0;
             }
@@ -63,9 +63,10 @@ public class PlayerController : MonoBehaviour
         //update the animation's variables
         anim.SetInteger("direction", direction);
         anim.SetBool("attacking", GetComponent<ChainController>().length != 0);
+        anim.SetBool("IsDead", transform.GetChild(0).GetComponent<PlayerHealth>().HP <= 0);
 
         //managing opening and closing inventory
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) && !(transform.GetChild(0).GetComponent<PlayerHealth>().HP <= 0))
         {
             trueOpenInventory = !trueOpenInventory;
         }
@@ -92,7 +93,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //What happens when you press K
-        if (!openInventory && Input.GetKeyDown(KeyCode.K))
+        if (!openInventory && Input.GetKeyDown(KeyCode.K) && !frozen)
         {
             if (inven.selected == 0 && GetComponent<PlayerInventory>().shrombs > 0)
             {
@@ -147,6 +148,11 @@ public class PlayerController : MonoBehaviour
                         transform.position.y + offsetY,
                         -0.5f);
                 Instantiate(dust, spawnPos, Quaternion.identity);
+            }
+            else if (inven.selected == 2 && inven.itemsUnlocked[2] == 2)
+            {
+                inven.itemsUnlocked[2] = 1;
+                transform.GetChild(0).GetComponent<PlayerHealth>().HP = transform.GetChild(0).GetComponent<PlayerHealth>().maxHP;
             }
         }
     }

@@ -45,11 +45,28 @@ public class SporeBlast : MonoBehaviour
         //take damage if collided with player, deal damage. if collided with Environment, delete itself
         if (other.CompareTag("Player"))
         {
-            PlayerHealth ph = other.transform.GetChild(0).GetComponent<PlayerHealth>();
-            ph.HP -= damage;
-            ph.immuneFrames = 40;
-            ph.hitFrames = 10;
-            Destroy(gameObject);
+            if ((direction < 3) == (player.direction < 3) && 
+                player.direction != direction && 
+                player.gameObject.GetComponent<ChainController>().length < 0.5f && 
+                blockable)
+            {
+                if (direction == 1 || direction == 3)
+                {
+                    direction += 1;
+                }
+                else
+                {
+                    direction -= 1;
+                }
+            }
+            else
+            {
+                PlayerHealth ph = other.transform.GetChild(0).GetComponent<PlayerHealth>();
+                ph.HP -= damage;
+                ph.immuneFrames = 40;
+                ph.hitFrames = 10;
+                Destroy(gameObject);
+            }
         }
         else if (other.CompareTag("Environment"))
         {

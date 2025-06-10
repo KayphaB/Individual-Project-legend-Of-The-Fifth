@@ -181,5 +181,11 @@ public class OozeCapController : MonoBehaviour
             hitReset = 30;
             colorShift = 5;
         }
+        else if (other.CompareTag("Explosion") && hitReset <= 0)
+        {
+            Health -= 5;
+            hitReset = 30;
+            colorShift = 5;
+        }
     }
 }

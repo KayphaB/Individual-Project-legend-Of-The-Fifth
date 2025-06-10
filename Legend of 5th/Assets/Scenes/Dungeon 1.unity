@@ -32364,6 +32364,13 @@ MonoBehaviour:
   frozen: 0
   enteringCave: 0
   usingWeapon: 0
+  cameraTransition: 0
+  openInventory: 0
+  inven: {fileID: 0}
+  UI: {fileID: 0}
+  inventorySpeed: 0
+  shromb: {fileID: 0}
+  dust: {fileID: 0}
   direction: 0
 --- !u!61 &801257678
 BoxCollider2D:
