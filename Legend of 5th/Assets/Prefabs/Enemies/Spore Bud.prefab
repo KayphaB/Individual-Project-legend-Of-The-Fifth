@@ -342,7 +342,7 @@ MonoBehaviour:
   - {fileID: 6773592966193457918, guid: 5f7ef624e75e5ec45a04fd8cbe116291, type: 3}
   - {fileID: 6773592966193457918, guid: 5f7ef624e75e5ec45a04fd8cbe116291, type: 3}
   - {fileID: 6773592966193457918, guid: 5f7ef624e75e5ec45a04fd8cbe116291, type: 3}
-  - {fileID: 7958593739089380081, guid: a6ebb86a891cc194db1bb0b7ce9fc547, type: 3}
+  - {fileID: 7813069823413299943, guid: e19bb49d0f183244a89e06cbceec0845, type: 3}
   - {fileID: 7958593739089380081, guid: a6ebb86a891cc194db1bb0b7ce9fc547, type: 3}
   dropChance: 0.8
   speed: 2.5

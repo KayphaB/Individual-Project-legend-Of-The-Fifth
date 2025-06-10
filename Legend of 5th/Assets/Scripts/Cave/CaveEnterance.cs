@@ -137,6 +137,7 @@ public class CaveEnterance : MonoBehaviour
         }
         else if (destination.y == -17)
         {
+            Debug.Log(unlockables.unlockables[0] && unlockables.unlockables[2]);
             itemPickup[1].SetActive(unlockables.unlockables[0] && unlockables.unlockables[2]);
 
             ItemPickup pickup = itemPickup[1].GetComponent<ItemPickup>();
