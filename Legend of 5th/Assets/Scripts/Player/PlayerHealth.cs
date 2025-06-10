@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
 
     public ScreenFade screenFade;
     public GameObject deathScreen;
-    private Vector3 checkpoint;
+    private Vector3 checkpoint = new Vector3(0, 0, -1);
     private Vector3 cameraPoint = new Vector3(0, 2.03f, -10);
     private float savedHealth = 3;
     public GameObject camera;
