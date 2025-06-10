@@ -107,6 +107,11 @@ public class ClassicFollow : MonoBehaviour
             {
                 Destroy(toDelete[i]);
             }
+            toDelete = GameObject.FindGameObjectsWithTag("Projectile");
+            for (int i = 0; i < toDelete.Length; i++)
+            {
+                Destroy(toDelete[i]);
+            }
 
             //snap player into camera when alost done with transition
             if (Vector3.Distance(transform.position, target) < 1)
