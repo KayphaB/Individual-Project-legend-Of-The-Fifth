@@ -22,6 +22,7 @@ public class ClassicFollow : MonoBehaviour
     public GameObject[] bogEnemies;
     public GameObject[] lavaEnemies;
     public GameObject[] d1Enemies;
+    public GameObject[] d2Enemies;
     public GameObject d1Boss;
     public bool d1Beaten;
     public GameObject poof;
@@ -92,26 +93,7 @@ public class ClassicFollow : MonoBehaviour
         if (playerC.cameraTransition)
         {
             //remove all enemies and pickups from previous room
-            GameObject[] toDelete = GameObject.FindGameObjectsWithTag("Enemy");
-            for (int i = 0; i < toDelete.Length; i++)
-            {
-                Destroy(toDelete[i]);
-            }
-            toDelete = GameObject.FindGameObjectsWithTag("Pickup");
-            for (int i = 0; i < toDelete.Length; i++)
-            {
-                Destroy(toDelete[i]);
-            }
-            toDelete = GameObject.FindGameObjectsWithTag("Dust");
-            for (int i = 0; i < toDelete.Length; i++)
-            {
-                Destroy(toDelete[i]);
-            }
-            toDelete = GameObject.FindGameObjectsWithTag("Projectile");
-            for (int i = 0; i < toDelete.Length; i++)
-            {
-                Destroy(toDelete[i]);
-            }
+            ResetRoom();
 
             //snap player into camera when alost done with transition
             if (Vector3.Distance(transform.position, target) < 1)
@@ -151,11 +133,11 @@ public class ClassicFollow : MonoBehaviour
         }
 
         //double check to see if you just entered a new room
-        if (newRoom && !playerC.cameraTransition && transform.position.x < 50)
+        if (newRoom && !playerC.cameraTransition && (transform.position.x < 50 || transform.position.y < -30))
         {
             int roomID = (int)(
                     Mathf.Floor((transform.position.x - offsetX) / screenLengthX) +
-                    Mathf.Floor((transform.position.y - offsetY) / screenLengthY) * 5 + 61);
+                    Mathf.Floor((transform.position.y - offsetY) / screenLengthY) * 5 + 66);
 
             if (roomID == 43 && 
                 !d1Beaten)
@@ -168,8 +150,11 @@ public class ClassicFollow : MonoBehaviour
                 int spawnNum = enemiesPerRoom[roomID];
 
                 GameObject[] enemiesToSpawn;
-
-                if (player.transform.position.y < -30)
+                if (player.transform.position.y < -90)
+                {
+                    enemiesToSpawn = d2Enemies;
+                }
+                else if (player.transform.position.y < -30)
                 {
                     enemiesToSpawn = d1Enemies;
                 }
@@ -214,5 +199,30 @@ public class ClassicFollow : MonoBehaviour
         }
 
         return newPos;
+    }
+
+    public void ResetRoom()
+    {
+        //remove all enemies and pickups from previous room
+        GameObject[] toDelete = GameObject.FindGameObjectsWithTag("Enemy");
+        for (int i = 0; i < toDelete.Length; i++)
+        {
+            Destroy(toDelete[i]);
+        }
+        toDelete = GameObject.FindGameObjectsWithTag("Pickup");
+        for (int i = 0; i < toDelete.Length; i++)
+        {
+            Destroy(toDelete[i]);
+        }
+        toDelete = GameObject.FindGameObjectsWithTag("Dust");
+        for (int i = 0; i < toDelete.Length; i++)
+        {
+            Destroy(toDelete[i]);
+        }
+        toDelete = GameObject.FindGameObjectsWithTag("Projectile");
+        for (int i = 0; i < toDelete.Length; i++)
+        {
+            Destroy(toDelete[i]);
+        }
     }
 }

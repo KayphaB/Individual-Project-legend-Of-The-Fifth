@@ -25,7 +25,7 @@ public class ConsumableDrop : MonoBehaviour
             if (keys > 0)
             {
                 cf.keyBatHere[(int) (Mathf.Floor((cf.transform.position.x - cf.offsetX) / cf.screenLengthX) +
-                Mathf.Floor((cf.transform.position.y - cf.offsetY) / cf.screenLengthY) * 5 + 61)] = false;
+                Mathf.Floor((cf.transform.position.y - cf.offsetY) / cf.screenLengthY) * 5 + 66)] = false;
             }
             Destroy(gameObject);
         }

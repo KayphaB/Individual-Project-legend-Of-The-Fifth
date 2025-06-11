@@ -44,9 +44,15 @@ public class PlayerHealth : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
                     HP = savedHealth;
+                    if (!transform.parent.GetComponent<PlayerController>().unlock.unlockables[5])
+                    {
+                        transform.parent.GetComponent<PlayerInventory>().mycopurite =
+                            (int) Mathf.Ceil(transform.parent.GetComponent<PlayerInventory>().mycopurite / 2);
+                    }
                     transform.parent.transform.position = checkpoint;
                     camera.transform.position = cameraPoint;
                     screenFade.on = false;
+                    camera.GetComponent<ClassicFollow>().ResetRoom();
                 }
             }
         }
@@ -79,7 +85,14 @@ public class PlayerHealth : MonoBehaviour
     {
         if (other.CompareTag("Enemy") && immuneFrames == 0)
         {
-            HP -= 0.5f;
+            if (other.name.Contains("Blue"))
+            {
+                HP -= 1.0f;
+            }
+            else
+            {
+                HP -= 0.5f;
+            }
             immuneFrames = 40;
             hitFrames = 10;
         }
