@@ -108,9 +108,10 @@ public class CaveEnterance : MonoBehaviour
         {
             for (int i = 0; i < 3; i++)
             {
+                ItemPickup pickup = itemPickup[i].GetComponent<ItemPickup>();
+                pickup.gameObject.SetActive(hasItem[i]);
                 if (hasItem[i])
                 {
-                    ItemPickup pickup = itemPickup[i].GetComponent<ItemPickup>();
                     pickup.cave = gameObject.GetComponent<CaveEnterance>();
                     pickup.isHeartContainer = isHeartContainer[i];
                     if (itemLevel[i] == 0)
