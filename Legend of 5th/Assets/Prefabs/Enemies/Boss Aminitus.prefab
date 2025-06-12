@@ -733,9 +733,10 @@ GameObject:
   - component: {fileID: 7048148999599821711}
   - component: {fileID: 8502693134352535593}
   - component: {fileID: 2485027176081610919}
+  - component: {fileID: 6874430494899173694}
   m_Layer: 0
   m_Name: Boss Aminitus
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -891,6 +892,37 @@ MonoBehaviour:
   degrees: 0
   hit: {r: 1, g: 0.2, b: 0, a: 1}
   white: {r: 1, g: 1, b: 1, a: 1}
+  framesPerSummon: 500
+  green:
+  - {fileID: 5798815482249703518, guid: e9caeac614a1eb64fb1e1633a1fc124d, type: 3}
+  blue:
+  - {fileID: 7027324424979205762, guid: 6f07ef6610b84444aadf3be2de013a2e, type: 3}
+  - {fileID: 8071615641001552252, guid: 3ba49ae751699064ebdc3040e59f8b8f, type: 3}
+  red:
+  - {fileID: 5796976981210235374, guid: c0d024f0fced97b418c5f9c5a41a91d2, type: 3}
+  - {fileID: 2816698205879601938, guid: 9ca0ed48015dcbe49b6bcc8c6f91caa9, type: 3}
+  defeated: 0
+--- !u!95 &6874430494899173694
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5772453366587271472}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5caae6f912a65134ebbd488aeb3381cf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8065053544240151483
 GameObject:
   m_ObjectHideFlags: 0

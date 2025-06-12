@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     public GameObject projectileTwo;
     private float projectileCooldown;
 
+    public GameObject superProjectile;
+
     private Animator anim;
     public int direction;
 
@@ -167,6 +169,37 @@ public class PlayerController : MonoBehaviour
             {
                 inven.itemsUnlocked[2] = 1;
                 transform.GetChild(0).GetComponent<PlayerHealth>().HP = transform.GetChild(0).GetComponent<PlayerHealth>().maxHP;
+            }
+            else if (inven.selected == 3 && GetComponent<PlayerInventory>().mycopurite >= 10 && projectileCooldown == 0)
+            {
+                GetComponent<PlayerInventory>().mycopurite -= 10;
+                projectileCooldown = 40;
+                float offsetX = 0;
+                float offsetY = 0;
+                if (direction == 1)
+                {
+                    offsetX = -0.8f;
+                }
+                else if (direction == 2)
+                {
+                    offsetX = 0.8f;
+                }
+                else if (direction == 3)
+                {
+                    offsetY = 0.8f;
+                }
+                else
+                {
+                    offsetY = -0.8f;
+                }
+                Vector3 spawnPos = new Vector3(
+                        transform.position.x + offsetX,
+                        transform.position.y + offsetY,
+                        -0.5f);
+
+                GameObject proj = Instantiate(superProjectile, spawnPos, Quaternion.identity);
+                proj.GetComponent<Projectile>().direction = direction;
+
             }
             else if (inven.selected == 4 && GetComponent<PlayerInventory>().mycopurite > 0 && projectileCooldown == 0)
             {

@@ -25,6 +25,8 @@ public class ClassicFollow : MonoBehaviour
     public GameObject[] d2Enemies;
     public GameObject d1Boss;
     public bool d1Beaten;
+    public GameObject d2Boss;
+    public bool d2Beaten;
     public GameObject poof;
     void Start()
     {
@@ -139,11 +141,16 @@ public class ClassicFollow : MonoBehaviour
                     Mathf.Floor((transform.position.x - offsetX) / screenLengthX) +
                     Mathf.Floor((transform.position.y - offsetY) / screenLengthY) * 5 + 66);
 
-            if (roomID == 48 && 
-                !d1Beaten)
+            if (roomID == 48 && !d1Beaten)
             {
                 GameObject instantiatedPoof = Instantiate(poof, new Vector3(40, -46, -6), Quaternion.identity);
                 instantiatedPoof.GetComponent<POOF>().spawn = d1Boss;
+            }
+            else if (roomID == 28 && !d2Beaten &&
+                playerC.inven.itemsUnlocked[3] == 1)
+            {
+                GameObject instantiatedPoof = Instantiate(poof, new Vector3(40, -46, -6), Quaternion.identity);
+                instantiatedPoof.GetComponent<POOF>().spawn = d2Boss;
             }
             else
             {
