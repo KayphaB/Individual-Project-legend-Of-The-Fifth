@@ -14,7 +14,7 @@ public class GlimmerShroomController : MonoBehaviour
     private ClassicFollow cameraS;
     private Vector2 checkSize = Vector2.one * 0.7f;
 
-    private float stateShift;
+    public float stateShift;
     public float framesPerTeleport;
     public float framesPerState;
     public Sprite[] states;
@@ -100,7 +100,7 @@ public class GlimmerShroomController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         //take damage if collided with weapon, more damage if its the mace
-        if (other.CompareTag("Weapon") && hitReset <= 0)
+        if (other.CompareTag("Weapon") && hitReset <= 0 && Mathf.Abs(stateShift) > 2 * framesPerState)
         {
             Health -= 2;
             hitReset = 30;

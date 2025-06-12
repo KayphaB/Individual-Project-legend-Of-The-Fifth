@@ -445,6 +445,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  minorVersion: {fileID: 5796976981210235374, guid: c0d024f0fced97b418c5f9c5a41a91d2, type: 3}
   hit: {r: 1, g: 0.2, b: 0, a: 1}
   white: {r: 1, g: 1, b: 1, a: 1}
 --- !u!50 &5170015235888416404

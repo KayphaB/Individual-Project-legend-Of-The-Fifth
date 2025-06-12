@@ -139,7 +139,7 @@ public class ClassicFollow : MonoBehaviour
                     Mathf.Floor((transform.position.x - offsetX) / screenLengthX) +
                     Mathf.Floor((transform.position.y - offsetY) / screenLengthY) * 5 + 66);
 
-            if (roomID == 43 && 
+            if (roomID == 48 && 
                 !d1Beaten)
             {
                 GameObject instantiatedPoof = Instantiate(poof, new Vector3(40, -46, -6), Quaternion.identity);

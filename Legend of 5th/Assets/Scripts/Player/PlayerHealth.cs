@@ -91,7 +91,15 @@ public class PlayerHealth : MonoBehaviour
             }
             else
             {
-                HP -= 0.5f;
+                if (other.GetComponent<GlimmerShroomController>() == null)
+                {
+                    HP -= 0.5f;
+                }
+                else if (Mathf.Abs(other.GetComponent<GlimmerShroomController>().stateShift) >
+                    other.GetComponent<GlimmerShroomController>().framesPerState * 2)
+                {
+                    HP -= 0.5f;
+                }
             }
             immuneFrames = 40;
             hitFrames = 10;

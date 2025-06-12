@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
 
         //update the animation's variables
         anim.SetInteger("direction", direction);
-        anim.SetBool("attacking", GetComponent<ChainController>().length != 0);
+        anim.SetBool("attacking", GetComponent<ChainController>().length != 0 || Input.GetKey(KeyCode.K));
         anim.SetBool("IsDead", transform.GetChild(0).GetComponent<PlayerHealth>().HP <= 0);
 
         //managing opening and closing inventory

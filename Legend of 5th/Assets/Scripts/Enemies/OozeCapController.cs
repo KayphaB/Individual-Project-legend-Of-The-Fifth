@@ -17,6 +17,8 @@ public class OozeCapController : MonoBehaviour
     public MoveCheckers[] moveChecks;
     private GameObject player;
 
+    public GameObject minorVersion;
+
     private float hitReset;
     private float colorShift;
     public Color hit;
@@ -193,6 +195,11 @@ public class OozeCapController : MonoBehaviour
             Destroy(other.gameObject);
             hitReset = 30;
             colorShift = 5;
+        }
+        else if (other.CompareTag("Dust") && gameObject.name.Contains("Blue"))
+        {
+            Instantiate(minorVersion, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 }
