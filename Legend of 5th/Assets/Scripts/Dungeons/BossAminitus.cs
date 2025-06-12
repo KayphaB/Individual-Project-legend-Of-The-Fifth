@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class BossAminitus : MonoBehaviour
 {
-    public int Health;
+    public int defences;
+    public GameObject[] defenceObjects;
+    public int state;
+
     private GameObject instantiatedPoof;
     public GameObject poof;
     public GameObject[] lootTable;
@@ -13,6 +16,8 @@ public class BossAminitus : MonoBehaviour
     private Rigidbody2D rb;
     private GameObject player;
     private Animator anim;
+    public float spinSpeed;
+    public float degrees;
 
     private float hitReset;
     private float colorShift;
@@ -29,6 +34,12 @@ public class BossAminitus : MonoBehaviour
 
     void FixedUpdate()
     {
+        degrees += spinSpeed * Time.deltaTime;
+        if (degrees > 360)
+        {
+            degrees = 0;
+        }
+
         if (!player.GetComponent<PlayerController>().openInventory)
         {
             //turn red for a bit after getting hit
@@ -48,35 +59,24 @@ public class BossAminitus : MonoBehaviour
                 hitReset -= 1;
             }
         }
+
+        for (int i = 0; i < defenceObjects.Length; i++)
+        {
+            defenceObjects[i].SetActive(defences > i);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         //take damage if collided with weapon, more damage if its the mace
-        if (other.CompareTag("Weapon") && hitReset <= 0)
+        if (other.CompareTag("Projectile"))
         {
-            Health -= 2;
-            hitReset = 30;
-            colorShift = 5;
-        }
-        else if (other.CompareTag("Weapon+") && hitReset <= 0)
-        {
-            Health -= 4;
-            hitReset = 30;
-            colorShift = 5;
-        }
-        else if (other.CompareTag("Explosion") && hitReset <= 0)
-        {
-            Health -= 10;
-            hitReset = 30;
-            colorShift = 5;
-        }
-        else if (other.CompareTag("Projectile") && hitReset <= 0)
-        {
-            Health -= (int)other.GetComponent<Projectile>().damage;
-            Destroy(other.gameObject);
-            hitReset = 30;
-            colorShift = 5;
+            if (other.name.Contains("Super"))
+            {
+                Destroy(other.gameObject);
+                defences -= 1;
+                state = (state + Random.Range(-1, 2) % 3);
+            }
         }
     }
 }
