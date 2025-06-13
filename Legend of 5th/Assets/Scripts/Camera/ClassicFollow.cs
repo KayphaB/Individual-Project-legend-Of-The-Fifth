@@ -148,7 +148,7 @@ public class ClassicFollow : MonoBehaviour
             else if (roomID == 28 && !d2Beaten &&
                 playerC.inven.itemsUnlocked[3] == 1)
             {
-                GameObject instantiatedPoof = Instantiate(poof, new Vector3(40, -46, -6), Quaternion.identity);
+                GameObject instantiatedPoof = Instantiate(poof, new Vector3(40, -94, -6), Quaternion.identity);
                 instantiatedPoof.GetComponent<POOF>().spawn = d2Boss;
             }
             else

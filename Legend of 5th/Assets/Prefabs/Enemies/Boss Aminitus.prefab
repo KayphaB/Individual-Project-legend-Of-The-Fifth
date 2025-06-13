@@ -873,7 +873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ebcb02aaa177a34ebe4a3ad06a3220a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defences: 0
+  defences: 8
   defenceObjects:
   - {fileID: 8065053544240151483}
   - {fileID: 1370091346471417341}
