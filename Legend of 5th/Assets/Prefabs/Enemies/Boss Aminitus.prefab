@@ -895,12 +895,15 @@ MonoBehaviour:
   framesPerSummon: 500
   green:
   - {fileID: 5798815482249703518, guid: e9caeac614a1eb64fb1e1633a1fc124d, type: 3}
+  - {fileID: 8071615641001552252, guid: 3ba49ae751699064ebdc3040e59f8b8f, type: 3}
+  - {fileID: 8071615641001552252, guid: 3ba49ae751699064ebdc3040e59f8b8f, type: 3}
   blue:
   - {fileID: 7027324424979205762, guid: 6f07ef6610b84444aadf3be2de013a2e, type: 3}
   - {fileID: 8071615641001552252, guid: 3ba49ae751699064ebdc3040e59f8b8f, type: 3}
   red:
   - {fileID: 5796976981210235374, guid: c0d024f0fced97b418c5f9c5a41a91d2, type: 3}
   - {fileID: 2816698205879601938, guid: 9ca0ed48015dcbe49b6bcc8c6f91caa9, type: 3}
+  projectile: {fileID: 8360066526372733355, guid: a0ade3016c829344b922e13b68df3726, type: 3}
   defeated: 0
 --- !u!95 &6874430494899173694
 Animator:

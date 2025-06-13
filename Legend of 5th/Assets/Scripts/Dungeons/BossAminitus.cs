@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,6 +33,8 @@ public class BossAminitus : MonoBehaviour
     public GameObject[] blue;
     public GameObject[] red;
 
+    public GameObject projectile;
+
     public bool defeated;
     void Start()
     {
@@ -48,6 +51,9 @@ public class BossAminitus : MonoBehaviour
         {
             degrees = 0;
         }
+
+        //test for enemy count
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         if (!player.GetComponent<PlayerController>().openInventory)
         {
@@ -74,22 +80,29 @@ public class BossAminitus : MonoBehaviour
             {
                 timer = 0;
 
-                for (int i = 0; i < 2; i++)
+                if (enemies.Length < 7)
                 {
-                    GameObject summon;
-                    if (state == 0)
+                    for (int i = 0; i < 2; i++)
                     {
-                        summon = blue[Random.Range(0, blue.Length)];
+                        GameObject summon;
+                        if (state == 0)
+                        {
+                            summon = blue[Random.Range(0, blue.Length)];
+                        }
+                        else if (state == 1)
+                        {
+                            summon = green[Random.Range(0, green.Length)];
+                        }
+                        else
+                        {
+                            summon = red[Random.Range(0, red.Length)];
+                        }
+                        Instantiate(summon, RandomPos(), Quaternion.identity);
                     }
-                    else if (state == 1)
-                    {
-                        summon = green[Random.Range(0, green.Length)];
-                    }
-                    else
-                    {
-                        summon = red[Random.Range(0, red.Length)];
-                    }
-                    Instantiate(summon, RandomPos(), Quaternion.identity);
+                }
+                else
+                {
+                    Instantiate(projectile, RandomPos(), Quaternion.identity);
                 }
             }
         }
@@ -101,7 +114,8 @@ public class BossAminitus : MonoBehaviour
 
         anim.SetBool("defeated", defeated);
         anim.SetBool("color", defences < -150);
-        anim.SetBool("summon", timer < 25);
+        anim.SetBool("summon", timer < 25 && enemies.Length < 7);
+        anim.SetBool("attacking", timer < 25 && enemies.Length >= 7);
 
         if (defences < 0)
         {
