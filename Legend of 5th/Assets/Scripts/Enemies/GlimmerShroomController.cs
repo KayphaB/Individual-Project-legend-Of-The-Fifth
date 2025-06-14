@@ -67,7 +67,7 @@ public class GlimmerShroomController : MonoBehaviour
         }
 
         //increase stateShift to move naimation along
-        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().inven)
+        if (!GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().openInventory)
         {
             stateShift++;
         }

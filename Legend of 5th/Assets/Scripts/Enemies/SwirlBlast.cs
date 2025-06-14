@@ -25,7 +25,7 @@ public class SwirlBlast : MonoBehaviour
         //move in the set direction
         if (!player.openInventory)
         {
-            rb.MovePosition(transform.position + direction * speed);
+            rb.MovePosition(transform.position + direction.normalized * speed);
         }
     }
 

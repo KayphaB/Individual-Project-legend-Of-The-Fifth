@@ -9,6 +9,7 @@ public class OozeCapController : MonoBehaviour
     public GameObject poof;
     public GameObject[] lootTable;
     public float dropChance;
+    public GameObject minorForm;
 
     public float speed;
     public int direction = 1;
@@ -16,8 +17,6 @@ public class OozeCapController : MonoBehaviour
     public GameObject[] moveCheckObjects;
     public MoveCheckers[] moveChecks;
     private GameObject player;
-
-    public GameObject minorVersion;
 
     private float hitReset;
     private float colorShift;
@@ -198,7 +197,8 @@ public class OozeCapController : MonoBehaviour
         }
         else if (other.CompareTag("Dust") && gameObject.name.Contains("Blue"))
         {
-            Instantiate(minorVersion, transform.position, Quaternion.identity);
+            Instantiate(minorForm, transform.position, Quaternion.identity);
+            Destroy(other.gameObject);
             Destroy(gameObject);
         }
     }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class SporeBudController : MonoBehaviour
@@ -9,6 +10,7 @@ public class SporeBudController : MonoBehaviour
     public GameObject poof;
     public GameObject[] lootTable;
     public float dropChance;
+    public GameObject minorForm;
 
     public float speed;
     public int direction = 1;
@@ -207,6 +209,12 @@ public class SporeBudController : MonoBehaviour
             Destroy(other.gameObject);
             hitReset = 30;
             colorShift = 5;
+        }
+        else if (other.CompareTag("Dust") && gameObject.name.Contains("Blue"))
+        {
+            Instantiate(minorForm, transform.position, Quaternion.identity);
+            Destroy(other.gameObject);
+            Destroy(gameObject);
         }
     }
 }

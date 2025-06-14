@@ -27,8 +27,8 @@ public class BossAminitus : MonoBehaviour
     public Color white;
     private SpriteRenderer sr;
 
-    private float timer;
     public float framesPerSummon;
+    private float timer = -20;
     public GameObject[] green;
     public GameObject[] blue;
     public GameObject[] red;
@@ -80,7 +80,7 @@ public class BossAminitus : MonoBehaviour
             {
                 timer = 0;
 
-                if (enemies.Length < 7)
+                if (enemies.Length < 5)
                 {
                     for (int i = 0; i < 2; i++)
                     {
@@ -114,8 +114,8 @@ public class BossAminitus : MonoBehaviour
 
         anim.SetBool("defeated", defeated);
         anim.SetBool("color", defences < -150);
-        anim.SetBool("summon", timer < 25 && enemies.Length < 7);
-        anim.SetBool("attacking", timer < 25 && enemies.Length >= 7);
+        anim.SetBool("summon", timer < 25 && enemies.Length < 5);
+        anim.SetBool("attacking", timer < 25 && enemies.Length >= 5);
 
         if (defences < 0)
         {

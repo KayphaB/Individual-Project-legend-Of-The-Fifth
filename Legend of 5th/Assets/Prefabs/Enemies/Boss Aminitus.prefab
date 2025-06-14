@@ -892,13 +892,13 @@ MonoBehaviour:
   degrees: 0
   hit: {r: 1, g: 0.2, b: 0, a: 1}
   white: {r: 1, g: 1, b: 1, a: 1}
-  framesPerSummon: 500
+  framesPerSummon: 400
   green:
   - {fileID: 5798815482249703518, guid: e9caeac614a1eb64fb1e1633a1fc124d, type: 3}
-  - {fileID: 8071615641001552252, guid: 3ba49ae751699064ebdc3040e59f8b8f, type: 3}
-  - {fileID: 8071615641001552252, guid: 3ba49ae751699064ebdc3040e59f8b8f, type: 3}
+  - {fileID: 215763610303160056, guid: fdd8eb10dae739a41a3bd2ef8c7e833e, type: 3}
   blue:
   - {fileID: 7027324424979205762, guid: 6f07ef6610b84444aadf3be2de013a2e, type: 3}
+  - {fileID: 8136291732107494716, guid: 9de69ea2c0732bc46a7fbe59f43623ea, type: 3}
   - {fileID: 8071615641001552252, guid: 3ba49ae751699064ebdc3040e59f8b8f, type: 3}
   red:
   - {fileID: 5796976981210235374, guid: c0d024f0fced97b418c5f9c5a41a91d2, type: 3}

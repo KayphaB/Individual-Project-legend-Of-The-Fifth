@@ -185,7 +185,10 @@ public class BossBat : MonoBehaviour
         }
         else if (other.CompareTag("Dust"))
         {
-            Health = 0;
+            Health -= 10;
+            Destroy(other.gameObject);
+            hitReset = 30;
+            colorShift = 5;
         }
         else if (other.CompareTag("Projectile") && hitReset <= 0)
         {

@@ -27,6 +27,8 @@ public class ClassicFollow : MonoBehaviour
     public GameObject d2Boss;
     public bool d2Beaten;
     public GameObject poof;
+
+    public int roomID;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -136,7 +138,7 @@ public class ClassicFollow : MonoBehaviour
         //double check to see if you just entered a new room
         if (newRoom && !playerC.cameraTransition && (transform.position.x < 50 || transform.position.y < -30))
         {
-            int roomID = (int)(
+            roomID = (int)(
                     Mathf.Floor((transform.position.x - offsetX) / screenLengthX) +
                     Mathf.Floor((transform.position.y - offsetY) / screenLengthY) * 5 + 66);
 
